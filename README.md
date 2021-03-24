@@ -30,5 +30,7 @@ Site works on the same principle as a stock exchange: users can put their steam-
 - PostgreSQL;
 - Fastify;
 ```
-![subj](https://raw.githubusercontent.com/JohnyKovalenko1337/images/master/ER-Diagram.png)
-
+## ER-diagram
+![subj](https://raw.githubusercontent.com/JohnyKovalenko1337/images/master/er_diagram%20v2.png)
+## Components
+![subj2](https://raw.githubusercontent.com/JohnyKovalenko1337/images/master/ccomponents.png)
