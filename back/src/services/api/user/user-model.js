@@ -39,7 +39,7 @@ module.exports = class User {
         // create sql script
         let sql = 'UPDATE User SET ';
         const formClause = Object.keys(fields).map(
-            key => `${key} = ${fields[key]}`
+            (key) => `${key} = ${fields[key]}`
         );
         sql += formClause.join(', ');
         sql += ` WHERE id = ${userId}`;
