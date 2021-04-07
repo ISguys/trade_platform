@@ -7,7 +7,6 @@ class Game {
             if (err) throw err;
             return res.rows;
         });
-        pool.end();
     }
 
     static async getById(gameId) {
@@ -16,7 +15,6 @@ class Game {
             if (err) throw err;
             return res.rows;
         });
-        pool.end();
     }
 
     static async addGame(steamPrice, title, steamLink, imageLink, description) {
@@ -28,7 +26,6 @@ image_link, description) VALUES ($1, $2, $3, $4, $5, $6)';
             if (err) throw err;
             return res.rows;
         });
-        pool.end();
     }
 
     static async deleteGame(gameId) {
@@ -37,7 +34,6 @@ image_link, description) VALUES ($1, $2, $3, $4, $5, $6)';
             if (err) throw err;
             return res.rows;
         });
-        pool.end();
     }
 
     static async updateGame(gameId, fields) {
@@ -54,7 +50,6 @@ ${fields[key]}`
             if (err) throw err;
             return res.rows;
         });
-        pool.end();
     }
 }
 
