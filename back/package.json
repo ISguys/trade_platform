@@ -4,14 +4,17 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\""
+        "test": "echo \"Error: no test specified\"",
+        "start": "node src/index.js"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "dotenv": "^8.2.0",
         "fastify": "^3.12.0",
-        "pg": "^8.5.1",
-        "prettier": "^2.2.1"
+        "pg": "^8.6.0",
+        "prettier": "^2.2.1",
+        "uuid": "^8.3.2"
     },
     "devDependencies": {
         "eslint": "^7.21.0"
