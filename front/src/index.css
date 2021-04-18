@@ -1,0 +1,1018 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: #9ca5b3;
+  background: url(C:\Users\mahla\Desktop\sites\isguyssite\src\images\bgsite.png);
+  background-repeat: no-repeat;
+  width: 1400px;
+}
+
+a:link,
+a:visited {
+  color: #3385ff;
+  text-decoration: none;
+  font-weight: normal;
+}
+a:active,
+a:hover {
+  color: #ffff00;
+  text-decoration: underline;
+}
+
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+img {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+}
+
+.cleaner {
+  clear: both;
+  width: 100%;
+  height: 0px;
+  font-size: 0px;
+}
+
+.cleaner_h10 {
+  clear: both;
+  width: 100%;
+  height: 10px;
+}
+.cleaner_h20 {
+  clear: both;
+  width: 100%;
+  height: 20px;
+}
+.cleaner_h30 {
+  clear: both;
+  width: 100%;
+  height: 30px;
+}
+.cleaner_h40 {
+  clear: both;
+  width: 100%;
+  height: 40px;
+}
+.cleaner_h50 {
+  clear: both;
+  width: 100%;
+  height: 50px;
+}
+.cleaner_h60 {
+  clear: both;
+  width: 100%;
+  height: 60px;
+}
+
+h1 {
+  margin: 0px;
+  padding: 2px 0;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+h2 {
+  margin-left: 400px;
+  padding: 10px 0;
+  font-size: 26px;
+  font-weight: normal;
+  color: #ffd800;
+}
+
+h3 {
+  margin: 0 0 10px 0;
+  padding: 0px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #9f1a04;
+}
+
+.margin_r_10 {
+  margin-right: 10px;
+}
+
+.margin_r_20 {
+  margin-right: 20px;
+}
+
+.margin_r_80 {
+  margin-right: 80px;
+}
+
+#site_title_bar_wrapper {
+  width: 100%;
+  height: 100px;
+}
+#site_title_bar_wrapper1 {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 140px;
+}
+
+#site_title_bar {
+  position: absolute;
+  width: 900px;
+  height: 171px;
+  left: 301px;
+  background: url(images/navbar/navbarBG.png);
+}
+.logo {
+  position: absolute;
+  width: 220px;
+  height: 100px;
+  right: 70px;
+  background: url(images/logo.png);
+}
+#general {
+  position: absolute;
+  width: 250px;
+  height: 120px;
+  left: 100px;
+  margin: 10px;
+  background: url(images/navbar/nearlogo.png) no-repeat;
+  background-size: 100px 50px;
+}
+#general1 {
+  font-family: Arial;
+  font-size: 17pt;
+  margin-top: 13px;
+  margin-left: 7px;
+  color: white;
+}
+#warranty {
+  position: absolute;
+  width: 250px;
+  height: 120px;
+  left: 220px;
+  top: 40px;
+  margin: 10px;
+  background: url(images/navbar/nearlogo.png) no-repeat;
+  background-size: 100px 50px;
+}
+#warranty1 {
+  font-family: Arial;
+  font-size: 15pt;
+  margin-top: 13px;
+  margin-left: 7px;
+  color: white;
+}
+#review {
+  position: absolute;
+  width: 250px;
+  height: 120px;
+  left: 580px;
+  top: 40px;
+  margin: 10px;
+  background: url(images/navbar/nearlogo.png) no-repeat;
+  background-size: 100px 50px;
+}
+#review1 {
+  font-family: Arial;
+  font-size: 17pt;
+  margin-top: 13px;
+  margin-left: 7px;
+  color: white;
+}
+
+#help {
+  position: absolute;
+  width: 250px;
+  height: 120px;
+  left: 700px;
+  margin: 10px;
+  background: url(images/navbar/nearlogo.png) no-repeat;
+  background-size: 100px 50px;
+}
+
+
+#steamlogin{
+	position: absolute;
+	width: 500px;
+	height: 120px;
+	left: 1000px;
+	margin: 10px;
+	background: url(images/steamlogin.png) no-repeat;
+	background-size: 165px 80px;
+  }
+
+
+#help1 {
+  font-family: Arial;
+  font-size: 17pt;
+  margin-top: 13px;
+  margin-left: 7px;
+  color: white;
+}
+
+#catalogue {
+  position: absolute;
+  width: 250px;
+  height: 120px;
+  left: 200px;
+  background: url(images/navbar2/navbar2img.png) no-repeat;
+  background-size: 250px 75px;
+  margin-top: 50px;
+}
+#catalogue1 {
+  font-family: Arial;
+  font-size: 30pt;
+  margin-top: 20px;
+  margin-left: 40px;
+  color: black;
+}
+#newgame {
+  position: absolute;
+  width: 250px;
+  height: 120px;
+  left: 600px;
+  background: url(images/navbar2/navbar2img.png) no-repeat;
+  background-size: 250px 75px;
+  margin-top: 50px;
+}
+#newgame1 {
+  font-family: Arial;
+  font-size: 30pt;
+  margin-top: 20px;
+  margin-left: 40px;
+  color: black;
+}
+#popular {
+  position: absolute;
+  width: 250px;
+  height: 120px;
+  left: 1000px;
+  background: url(images/navbar2/navbar2img.png) no-repeat;
+  background-size: 250px 75px;
+  margin-top: 50px;
+}
+#popular1 {
+  font-family: Arial;
+  font-size: 19pt;
+  margin-top: 20px;
+  margin-left: 40px;
+  color: black;
+}
+#search {
+  position: absolute;
+  width: 180px;
+  height: 100px;
+  left: 600px;
+  background: url(images/store/search.png) no-repeat;
+  background-size: 150px 50px;
+  margin-top: 100px;
+}
+#sort {
+  position: absolute;
+  width: 180px;
+  height: 100px;
+  left: 1000px;
+  background: url(images/store/sortby.png) no-repeat;
+  background-size: 150px 50px;
+  margin-top: 100px;
+}
+#slider {
+  position: absolute;
+  width: 180px;
+  height: 100px;
+  left: 150px;
+  background: url(images/store/sliderpic.png) no-repeat;
+  background-size: 150px 50px;
+  margin-top: 100px;
+}
+
+#sort1 {
+  position: absolute;
+  width: 250px;
+  height: 120px;
+  left: 200px;
+  font-size: 14pt;
+}
+#inputsearch {
+  position: absolute;
+  font-size: 40px;
+  width: 175px;
+  height: 10px;
+  margin-top: 15px;
+  left: 170px;
+  background: url(images/store/searchinput.png) no-repeat;
+  background-size: 305px 15px;
+  font-size: 5pt;
+}
+#inputslider {
+  position: absolute;
+  font-size: 40px;
+  width: 220px;
+  height: 10px;
+  margin-top: 15px;
+  left: 170px;
+  font-size: 5pt;
+}
+
+#menu1 {
+  position: relative;
+  clear: both;
+  width: 1020px;
+  padding: 10px 20px;
+}
+#menu2 {
+  position: relative;
+  clear: both;
+  width: 1080px;
+  padding: 20px 20px;
+}
+
+#frame1 {
+  position: relative;
+  clear: both;
+  width: 100%;
+  height: 600px;
+  padding-left: 40px;
+}
+#frame2 {
+  position: absolute;
+  clear: both;
+  width: 38%;
+  height: 800px;
+  padding-left: 40px;
+}
+#frame3 {
+  position: relative;
+  clear: both;
+  width: 400px;
+  height: 800px;
+  padding-left: 40px;
+}
+#gamepage {
+  position: relative;
+  clear: both;
+  width: 100%;
+  height: 800px;
+  padding-left: 40px;
+}
+
+#gamecard {
+  display: inline-block;
+  position: absolute;
+  clear: both;
+  width: 552px;
+  height: 373px;
+  padding-left: 40px;
+  margin-top: 60px;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 552px 373px;
+}
+#gameprice {
+  display: inline-block;
+  position: absolute;
+  clear: both;
+  width: 555px;
+  height: 50px;
+  margin-top: 453px;
+  font-size: 400%;
+  text-align: center;
+}
+
+#buybutton {
+  position: absolute;
+  width: 420px;
+  height: 120px;
+  left: 120px;
+  background: url(images/Gamepage/buybutton3.png) no-repeat;
+  background-size: 400px 120px;
+  margin-top: 600px;
+}
+
+#gamename {
+  margin-top: 60px;
+  position: absolute;
+  width: 600px;
+  height: 10%;
+  margin-left: 635px;
+  font-size: 400%;
+  text-align: center;
+}
+
+#Alloffers {
+  margin-left: 655px;
+  position: absolute;
+  width: 200px;
+  height: 10%;
+  margin-top: 150px;
+}
+#lookinsteam {
+  margin-left: 1005px;
+  position: absolute;
+  width: 200px;
+  height: 10%;
+  margin-top: 150px;
+}
+#genres {
+  padding: 20px;
+  margin-left: 635px;
+  position: absolute;
+  width: 600px;
+  height: 10%;
+  margin-top: 250px;
+}
+#description {
+  padding: 20px;
+  margin-left: 635px;
+  position: absolute;
+  width: 600px;
+  height: 50%;
+  margin-top: 350px;
+  font-size: 150%;
+}
+
+#aside {
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  background: url(images/store/kataloggif.gif) no-repeat;
+  background-size: 300px 600px;
+  margin-left: 40px;
+  bottom: 50px;
+}
+#sectionsimg {
+  position: absolute;
+  clear: both;
+  width: 40px;
+  height: 40px;
+  margin-left: 10%;
+  margin-top: 10%;
+}
+#sections {
+  position: absolute;
+  clear: both;
+  width: 65%;
+  height: 40%;
+  margin-left: 14%;
+  margin-top: 40%;
+}
+#sectionstext {
+  position: absolute;
+  clear: both;
+  margin-left: 37%;
+  margin-top: 15%;
+  font-size: 20pt;
+}
+#sectionstext1 {
+  position: absolute;
+  clear: both;
+  margin-left: 37%;
+  margin-top: 34%;
+  font-size: 10pt;
+  color: white;
+}
+#sectionstext2 {
+  position: absolute;
+  clear: both;
+  margin-left: 37%;
+  margin-top: 46%;
+  font-size: 10pt;
+  color: white;
+}
+#sectionstext3 {
+  position: absolute;
+  clear: both;
+  margin-left: 37%;
+  margin-top: 60%;
+  font-size: 10pt;
+  color: white;
+}
+#sectionstext4 {
+  position: absolute;
+  clear: both;
+  margin-left: 37%;
+  margin-top: 73%;
+  font-size: 10pt;
+  color: white;
+}
+#categoriesimg {
+  position: absolute;
+  clear: both;
+  width: 20%;
+  height: 20%;
+  margin-left: 10%;
+  margin-top: 10%;
+}
+#categories {
+  position: absolute;
+  clear: both;
+  width: 65%;
+  height: 40%;
+  margin-left: 14%;
+  margin-top: 90%;
+}
+#categoriestext {
+  position: absolute;
+  clear: both;
+  margin-left: 37%;
+  margin-top: 15%;
+  font-size: 20pt;
+}
+#categoriestext1 {
+  position: absolute;
+  clear: both;
+  margin-left: 37%;
+  margin-top: 34%;
+  font-size: 10pt;
+  color: white;
+}
+#categoriestext2 {
+  position: absolute;
+  clear: both;
+  margin-left: 37%;
+  margin-top: 46%;
+  font-size: 10pt;
+  color: white;
+}
+#categoriestext3 {
+  position: absolute;
+  clear: both;
+  margin-left: 37%;
+  margin-top: 60%;
+  font-size: 10pt;
+  color: white;
+}
+#categoriestext4 {
+  position: absolute;
+  clear: both;
+  margin-left: 37%;
+  margin-top: 73%;
+  font-size: 10pt;
+  color: white;
+}
+#categoriestext5 {
+  position: absolute;
+  clear: both;
+  margin-left: 37%;
+  margin-top: 86%;
+  font-size: 10pt;
+  color: white;
+}
+
+#cards {
+  position: absolute;
+  clear: both;
+  width: 1000px;
+  height: 500px;
+  margin-left: 400px;
+  margin-bottom: 50px;
+}
+#card1 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+}
+#card1img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card1.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card1txt {
+  position: absolute;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#card2 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-left: 20%;
+}
+
+#card2img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card2txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#card3 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-left: 40%;
+}
+
+#card3img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card3.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card3txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#card4 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-left: 60%;
+}
+
+#card4img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card1.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card4txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#card5 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-left: 80%;
+}
+
+#card5img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card5txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#card6 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-top: 20%;
+}
+
+#card6img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card6txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#card7 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-left: 20%;
+  margin-top: 20%;
+}
+
+#card7img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card7txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+#card8 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-left: 40%;
+  margin-top: 20%;
+}
+
+#card8img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card8txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#card9 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-left: 60%;
+  margin-top: 20%;
+}
+
+#card9img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card9txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#card10 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-left: 80%;
+  margin-top: 20%;
+}
+
+#card10img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card10txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#card11 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-top: 40%;
+}
+
+#card11img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card11txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#card12 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-left: 20%;
+  margin-top: 40%;
+}
+
+#card12img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card12txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+#card13 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-left: 40%;
+  margin-top: 40%;
+}
+
+#card13img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card13txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#card14 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-left: 60%;
+  margin-top: 40%;
+}
+
+#card14img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card14txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#card15 {
+  position: absolute;
+  clear: both;
+  width: 16%;
+  height: 25%;
+  margin-left: 80%;
+  margin-top: 40%;
+}
+
+#card15img {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  background: url(images/store/card2.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+#card15txt {
+  position: absolute;
+  width: 100%;
+  margin-top: 60%;
+  font-size: 14pt;
+  text-align: center;
+  color: white;
+}
+
+#pgswitch {
+  position: absolute;
+  clear: both;
+  width: 100px;
+  height: 100px;
+  margin-top: 530px;
+  margin-left: 800px;
+}
+#previouspg {
+  position: absolute;
+  clear: both;
+  width: 50%;
+  height: 100%;
+  background: url(images/store/previouspg.png) no-repeat;
+  background-size: 100%;
+}
+#nextpg {
+  position: absolute;
+  clear: both;
+  width: 50%;
+  height: 100%;
+  margin-left: 50%;
+  background: url(images/store/nextpg.png) no-repeat;
+  background-size: 100%;
+}
+
+a.arrow {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 0;
+}
+
+.arrow::before {
+  content: "";
+  display: inline-block;
+  border: 20px solid #0074d9;
+  border-right-width: 10px;
+  border-left-width: 10px;
+  border-right-color: transparent;
+  border-left-color: transparent;
+}
+
+.arrow-up::before {
+  border-top-width: 0;
+}
+
+.arrow-down::before {
+  border-bottom-width: 0;
+}
+
+#site_title {
+  position: absolute;
+  width: 290px;
+  left: 340px;
+  padding: 40px 10px 0 0;
+  top: 0px;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+
+#footer_wrapper {
+  width: 1510px;
+  background: url(images/footer/footer.png) no-repeat;
+  background-size: 100%;
+}
+
+#footer {
+  margin: 0 auto;
+  padding: 40px;
+  color: #9ca4af;
+}
