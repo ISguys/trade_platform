@@ -1,43 +1,47 @@
 const pool = require('../../../db/connection');
-// eslint-disable-next-line no-unused-vars
+const { v4 } = require('uuid');
+
 module.exports = class User {
-    constructor(steamUsername, steamId, balance, avatar) {
+    constructor(steamUsername, steamId, avatar) {
+        this.id = v4();
         this.steamUsername = steamUsername;
         this.steamId = steamId;
-        this.tradeLink = '';
+        this.tradeLink = ' \'https://steamcommunity.com\' ';
         this.balance = 0;
         this.avatar = avatar;
-        this.inventory = [];
+        this.inventory = '';
+        this.role = 'user';
     }
 
     static async getAll() {
-        const sql = 'SELECT * FROM User';
+        const sql = 'SELECT * FROM "Users"';
         const result = await pool.query(sql);
         return result.rows;
     }
 
-    static async getById(userId) {
-        const sql = `SELECT * FROM User WHERE id = ${userId}`;
+    static async findById(userId) {
+        const sql = `SELECT * FROM "Users" WHERE "steam_id"='${userId}'`;
         const result = await pool.query(sql);
-        return result.rows;
+        return result.rows[0];
     }
 
     async save() {
         const sql =
-            'INSERT INTO User(steamUsername, steam_id,  avatar) ' +
             // eslint-disable-next-line max-len
-            `VALUES (${this.steamUsername}, ${this.steam_id}, ${this.avatar})`;
+            'INSERT INTO "Users" (id, steam_name, trade_link, balance, steam_id, ava_link, inventory, role)' +
+            ` VALUES ('${this.id}','${this.steamUsername}', ${this.tradeLink}, ${this.balance},` +
+            `'${this.steamId}', '${this.avatar}', '{${this.inventory}}', '${this.role}')`;
         return pool.query(sql);
     }
 
     static async deleteUser(userId) {
-        const sql = `DELETE FROM User WHERE id = ${userId}`;
+        const sql = `DELETE FROM "Users" WHERE "id" = '${userId}'`;
         return pool.query(sql);
     }
 
     static async updateUser(userId, fields) {
         // create sql script
-        let sql = 'UPDATE User SET ';
+        let sql = 'UPDATE "Users" SET ';
         const formClause = Object.keys(fields).map(
             (key) => `${key} = ${fields[key]}`
         );
