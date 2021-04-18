@@ -2,12 +2,40 @@ const fastify = require('fastify')({
     logger: true
 });
 
-fastify.register([
-    require('./api/user/user-routes'),
-// other routes
-]);
+const fastifyPassport = require('fastify-passport');
+const SteamStrategy = require('passport-steam').Strategy;
+const fastifySecureSession = require('fastify-secure-session');
+require('dotenv').config();
 
-fastify.listen(3000, (err, address) => {
+//templates pligun
+fastify.register(require('point-of-view'), {
+    engine: {
+        ejs: require('ejs')
+    },
+    includeViewExtension: true,
+    templates: './src/views',
+});
+
+//passport plugins
+fastify.register(fastifySecureSession, { key: process.env.PASSPORT_SECRET });
+fastify.register(fastifyPassport.initialize());
+fastify.register(fastifyPassport.secureSession());
+
+fastifyPassport.use('steam', new SteamStrategy({
+    returnURL: `${process.env.BACK_URL}/auth/return`,
+    realm: process.env.BACK_URL,
+    apiKey: process.env.STEAM_ACCESS
+},
+(identifier, profile, done) => done(null, profile)
+));
+// auth validation for routes
+fastify.register(require('./services/api/auth/plugins/auth-plugin'));
+// routes
+fastify.register(require('./services/api/game/routes'));
+fastify.register(require('./services/api/user/user-routes'));
+fastify.register(require('./services/api/auth/auth-routes'));
+
+fastify.listen(process.env.PORT || 3001, (err, address) => {
     if (err) {
         fastify.log.error(err);
         process.exit(1);
