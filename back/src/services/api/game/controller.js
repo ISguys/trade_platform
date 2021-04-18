@@ -1,11 +1,28 @@
 const { default: fastify } = require('fastify');
 const GameModel = require('./model');
 
-const controllers = {};
-
-controllers.getAll = async function () {
+exports.getAll = async function(request, reply) {
     try {
-        return await GameModel.getAll();
+        const games = await GameModel.getAll();
+        console.log(games);
+        if (games.length < 1) {
+            reply.send([]);
+        }
+        return reply.send(games);
+    } catch (err) {
+        fastify.log.error(err);
+        throw new Error(`${err.message}\n${err.name}: \
+        in line ${err.lineNumber}`);
+    }
+};
+exports.getGameById = async function(request, reply) {
+    try {
+        const { gameId } = request.params;
+        const game = await GameModel.getById(gameId);
+        if (!game) {
+            return reply.send({ 'message': 'No game' });
+        }
+        return reply.send(game);
     } catch (err) {
         fastify.log.error(err);
         throw new Error(`${err.message}\n${err.name}: \
@@ -13,18 +30,7 @@ controllers.getAll = async function () {
     }
 };
 
-controllers.getGameById = async function (request) {
-    try {
-        const { gameId } = request.query;
-        return await GameModel.getById(gameId);
-    } catch (err) {
-        fastify.log.error(err);
-        throw new Error(`${err.message}\n${err.name}: \
-        in line ${err.lineNumber}`);
-    }
-};
-
-controllers.addGame = async function (request) {
+exports.addGame = async function(request, reply) {
     try {
         const {
             steamPrice,
@@ -33,13 +39,14 @@ controllers.addGame = async function (request) {
             imageLink,
             description,
         } = request.body;
-        return await GameModel.addGame(
+        const result = await GameModel.addGame(
             steamPrice,
             title,
             steamLink,
             imageLink,
             description
         );
+        return reply.send(result);
     } catch (err) {
         fastify.log.error(err);
         throw new Error(`${err.message}\n${err.name}: \
@@ -47,10 +54,11 @@ controllers.addGame = async function (request) {
     }
 };
 
-controllers.updateGame = async function (request) {
+exports.updateGame = async function(request, reply) {
     try {
         const { gameId, fields } = request.body;
-        return await GameModel.updateGame(gameId, fields);
+        const result = await GameModel.updateGame(gameId, fields);
+        return reply.send(result);
     } catch (err) {
         fastify.log.error(err);
         throw new Error(`${err.message}\n${err.name}: \
@@ -58,10 +66,11 @@ controllers.updateGame = async function (request) {
     }
 };
 
-controllers.deleteGame = async function (request) {
+exports.deleteGame = async function(request, reply) {
     try {
         const { gameId } = request.body;
-        return await GameModel.deleteGame(gameId);
+        const result = await GameModel.deleteGame(gameId);
+        return reply.send(result);
     } catch (err) {
         fastify.log.error(err);
         throw new Error(`${err.message}\n${err.name}: \
@@ -69,4 +78,3 @@ controllers.deleteGame = async function (request) {
     }
 };
 
-module.exports = controllers;
