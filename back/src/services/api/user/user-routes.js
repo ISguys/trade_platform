@@ -1,38 +1,32 @@
 const {
-    getAllSchema, getByIdSchema, getAccountSchema, createSchema
+    getAllSchema, getByIdSchema, getAccountSchema
 } = require('./schema/user-schema');
 
 const {
-    getAll, getById, getAccount, create
+    getAll, getById, getAccount
 } = require('./user-controller');
 
-module.exports = function(fastify, req, reply, done) {
+module.exports = async function(fastify) {
     fastify.route({
         method: 'GET',
-        url: '/',
+        url: '/users/',
         schema: getAllSchema,
-        handler: getAll(req, reply),
-        preHandler: () => {}  // prehandler logic for access
+        preValidation: [fastify.tokenValidation],
+        handler: getAll,
     });
     fastify.route({
         method: 'GET',
-        url: '/:userId',
+        url: '/users/:userId',
         schema: getByIdSchema,
-        handler: getById(req, reply),
+        preValidation: [fastify.tokenValidation],
+        handler: getById,
     });
     fastify.route({
         method: 'GET',
         url: '/myaccount/:userId',
         schema: getAccountSchema,
-        handler: getAccount(req, reply),
-        preHandler: () => {}  // prehandler logic for access
+        preValidation: [fastify.tokenValidation],
+        handler: getAccount,
     });
-    // it will be in auth routes
-    fastify.route({
-        method: 'POST',
-        url: '/signup',
-        schema: createSchema,
-        handler: create(req, reply)
-    });
-    done();
+
 };

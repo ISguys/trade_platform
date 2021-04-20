@@ -3,7 +3,7 @@ const schemes = {};
 schemes.getAll = {
     response: {
         200: {
-            type: ['array', 'null'],
+            type: 'array',
             items: {
                 type: 'object',
                 properties: {
@@ -29,7 +29,7 @@ schemes.getGameById = {
 
     response: {
         200: {
-            type: ['array', 'null'],
+            type: 'array',
             items: {
                 type: 'object',
                 properties: {
