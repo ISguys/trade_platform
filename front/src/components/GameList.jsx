@@ -1,18 +1,21 @@
 import React from "react";
 
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import Game1 from '../components/Game1';
 
 const GameList = () => {
   return (
     <>
     <div id="cards">
-    <div id="card1" href="/game1">
+
+    <Link to="/Game1">
+    <div id="card1">
 
         {" "}
         <div id="card1img"></div>
         <div id="card1txt">Cyberpunk 2077</div>
     </div>
+    </Link>
     <div id="card2">
       <a href="https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/?l=russian">
         {" "}
@@ -118,7 +121,6 @@ const GameList = () => {
 <Route exact path="/game1" component={Game1} />
  </Switch>
  </Router>
-
   </>
   );
 };

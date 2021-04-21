@@ -1,11 +1,11 @@
 import React from "react";
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Footer from "../components/Footer";
+
+
 
 const Game1 = () => {
   return (
 <>
-<Header />
 <div id="gamepage"> 
 
 <div id="frame2">
