@@ -18,13 +18,14 @@ exports.login = async (req, reply) => {
                 expiresIn: '2h',
             });
 
-        reply.view('success', {
+        return reply.view('success', {
             id: user.id,
             username: user.steamUsername,
             jwtToken: token,
             clientUrl: process.env.FRONT_URL
         });
     } catch (error) {
+        console.log(error);
         throw new Error(error);
     }
 };

@@ -23,7 +23,7 @@ fastify.register(fastifyPassport.secureSession());
 
 fastifyPassport.use('steam', new SteamStrategy({
     returnURL: `${process.env.BACK_URL}/auth/return`,
-    realm: process.env.BACK_URL,
+    realm: process.env.BACK_URL + '/',
     apiKey: process.env.STEAM_ACCESS
 },
 (identifier, profile, done) => done(null, profile)

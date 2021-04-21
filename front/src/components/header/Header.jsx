@@ -1,13 +1,17 @@
-import React from "react";
-import sitelogo from "./../assets/logo.png";
-import { BrowserRouter, Link, Route} from "react-router-dom";
-import Game1 from '../components/Game1';
-import Navbar from "../components/Navbar";
-import PGSwitch from "../components/PGSwitch";
-import Sidebar from "../components/Sidebar";
-import GameList from '../components/GameList';
-import Footer from '../components/Footer';
-import Warranty from '../components/Warranty';
+import React from 'react';
+import { BrowserRouter, Link, Route} from 'react-router-dom';
+
+import Game1 from '../Game1';
+import Navbar from '../Navbar';
+import PGSwitch from '../PGSwitch';
+import Sidebar from '../Sidebar';
+import GameList from '../GameList';
+import Footer from '../Footer';
+import Warranty from '../Warranty';
+import SignInButton from './SignInButton';
+import ProfileWrapperAuthorized from './ProfileWrapperAuthorized'
+import { AuthContext } from '../../context/auth-context';
+import sitelogo from '../../assets/logo.png';
 
 const Header = () => {
   return (
@@ -38,10 +42,12 @@ const Header = () => {
               <div id="help1">Помощь</div>
             </div>
           </a>
-          <a href="https://www.youtube.com/watch?v=DLzxrzFCyOs&ab_channel=AllKindsOfStuff">
-            {" "}
-            <div id="steamlogin"></div>
-          </a>
+            {AuthContext.isLoggedIn ? (
+                <ProfileWrapperAuthorized clicked={AuthContext.logout()} />
+            ) : (
+                    <SignInButton />
+            )
+            }
 
           <div id="site_title">
             <div>

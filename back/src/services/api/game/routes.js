@@ -3,7 +3,7 @@ const { getAll, getGameById, addGame, deleteGame, updateGame } = require('./cont
 
 module.exports = function(fastify, opts, done) {
     // get all rows from table Game
-    fastify.get('/game', { schema: schemes.getAll }, getAll);
+    fastify.get('/game', /*{ schema: schemes.getAll },*/ getAll);
 
     // get game by id
     fastify.get(

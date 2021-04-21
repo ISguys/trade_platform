@@ -3,8 +3,8 @@ body {
   padding: 0;
   font-size: 11px;
   color: white;
-  background: url(C:\Users\mahla\Desktop\sites\isguyssite\src\images\bgsite.png);
-  background-repeat: unset;
+  background: url('./images/bgsite.png');
+  background-repeat:unset;
   width: 1200px;
 }
 
