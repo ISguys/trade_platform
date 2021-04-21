@@ -12,7 +12,7 @@ class Game {
         return pool.query(sql);
     }
 
-    static async addGame(steamPrice, title, steamLink, imageLink, description) {
+    static async add(steamPrice, title, steamLink, imageLink, description) {
         const args = [steamPrice, title, steamLink, imageLink, description];
         const sql =
             'INSERT INTO "Games"(steam_price, title, steam_link, \
@@ -21,13 +21,13 @@ image_link, description) VALUES ($1, $2, $3, $4, $5, $6)';
         return 'success';
     }
 
-    static async deleteGame(gameId) {
+    static async delete(gameId) {
         const sql = `DELETE FROM "Games" WHERE game_id = ${gameId}`;
         await pool.query(sql);
         return 'success';
     }
 
-    static async updateGame(gameId, fields) {
+    static async update(gameId, fields) {
         // create sql script
         let sql = 'UPDATE "Games" SET ';
         const formClause = Object.keys(fields).map(
