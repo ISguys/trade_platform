@@ -7,6 +7,8 @@ const SteamStrategy = require('passport-steam').Strategy;
 const fastifySecureSession = require('fastify-secure-session');
 require('dotenv').config();
 
+fastify.register(require('fastify-cors'));
+
 //templates pligun
 fastify.register(require('point-of-view'), {
     engine: {
