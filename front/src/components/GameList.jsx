@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Game1 from "../components/Game1";
 
@@ -11,11 +10,14 @@ const GameList = () => {
 
   useEffect(() => {
     //setloading(true);
-    axios.get("google.com" + /games/).then((res) => {
+    axios.get("http://localhost:3001/game").then((res) => {
+        console.log(res);
       setGames(res.data);
       //setError(false);
       //setloading(false);
-    });
+    }).catch(err=>{
+        console.log(err);
+    })
     /*.catch(err => {
               setError(true);
               setloading(false);
@@ -25,20 +27,20 @@ const GameList = () => {
   return (
     <>
       <div id="cards">
-        {games[0] &&
+        {games &&
           games.map((game) => (
+              // eslint-disable-next-line react/jsx-key
             <Link to="/Game1">
               <div id="card1">
                 {" "}
                 <div id="card1img"> <img
                                         src={game.image}
-                                        alt={game.name}
+                                        alt={game.title}
                                     /> </div>
                 <div id="card1txt">{game.name}</div>
               </div>
             </Link>
           ))}
-        ;
       </div>
 
       <Router>
