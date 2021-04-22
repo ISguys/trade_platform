@@ -7,6 +7,8 @@ const SteamStrategy = require('passport-steam').Strategy;
 const fastifySecureSession = require('fastify-secure-session');
 require('dotenv').config();
 
+fastify.register(require('fastify-cors'));
+
 //templates pligun
 fastify.register(require('point-of-view'), {
     engine: {
@@ -23,7 +25,7 @@ fastify.register(fastifyPassport.secureSession());
 
 fastifyPassport.use('steam', new SteamStrategy({
     returnURL: `${process.env.BACK_URL}/auth/return`,
-    realm: process.env.BACK_URL,
+    realm: process.env.BACK_URL + '/',
     apiKey: process.env.STEAM_ACCESS
 },
 (identifier, profile, done) => done(null, profile)

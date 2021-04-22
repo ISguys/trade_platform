@@ -1,0 +1,48 @@
+const pool = require('../../../db/connection');
+
+class Offer {
+    static async getAll() {
+        const sql = 'SELECT * FROM "Offers"';
+        const rows = await pool.query(sql);
+        return rows.rows;
+    }
+
+    static async getById(offerId) {
+        const sql = `SELECT * FROM "Offers" WHERE order_id = ${offerId}`;
+        return pool.query(sql);
+    }
+
+    static async add(creatorId, gameId, steamBotLink, price) {
+        const createdAt = new Date().toISOString().split('T')[0];
+        const args = [creatorId, gameId, steamBotLink, price, createdAt];
+        const sql =
+            'INSERT INTO "Offers"(creator_id, game_id,\
+ steam_bot_link, price, created_at) VALUES ($1, $2, $3, $4, $5)';
+        await pool.query(sql, args);
+        return 'success';
+    }
+
+    static async delete(offerId) {
+        const sql = `DELETE FROM "Offers" WHERE order_id = ${offerId}`;
+        await pool.query(sql);
+        return 'success';
+    }
+
+    static async getActive() {
+        const sql = 'SELECT * FROM "Offers" WHERE status = TRUE';
+        const rows = await pool.query(sql);
+        return rows.rows;
+    }
+
+    static async close(offerId, buyerId) {
+        const date = new Date().toISOString().split('T')[0];
+        const args = [buyerId, date, offerId];
+        const sql =
+            'UPDATE "Offers" SET status = FALSE,\
+ buyer_id = $1, order_date = $2 WHERE order_id = $3';
+        await pool.query(sql, args);
+        return 'success';
+    }
+}
+
+module.exports = Offer;

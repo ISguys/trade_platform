@@ -8,6 +8,7 @@ schemes.getAll = {
                 type: 'object',
                 properties: {
                     gameId: { type: 'integer' },
+                    title: { type: 'string' },
                     streamPrice: { type: 'number' },
                     steamLink: { type: 'string' },
                     imageLink: { type: 'string' },
@@ -34,6 +35,7 @@ schemes.getGameById = {
                 type: 'object',
                 properties: {
                     gameId: { type: 'integer' },
+                    title: { type: 'string' },
                     streamPrice: { type: 'number' },
                     steamLink: { type: 'string' },
                     imageLink: { type: 'string' },
@@ -65,10 +67,7 @@ schemes.addGame = {
 
     response: {
         200: {
-            type: 'object',
-            properties: {
-                status: { type: 'string' },
-            },
+            type: 'string',
         },
     },
 };
@@ -79,16 +78,13 @@ schemes.updateGame = {
         required: ['gameId', 'fields'],
         properties: {
             gameId: { type: 'integer' },
-            fields: { type: 'array' },
+            fields: { type: 'object' },
         },
     },
 
     response: {
         200: {
-            type: 'object',
-            properties: {
-                status: { type: 'string' },
-            },
+            type: 'string',
         },
     },
 };
@@ -104,10 +100,7 @@ schemes.deleteGame = {
 
     response: {
         200: {
-            type: 'object',
-            properties: {
-                status: { type: 'string' },
-            },
+            type: 'string',
         },
     },
 };

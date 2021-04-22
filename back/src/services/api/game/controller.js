@@ -1,10 +1,9 @@
 const { default: fastify } = require('fastify');
-const GameModel = require('./model');
+const Game = require('./model');
 
-exports.getAll = async function(request, reply) {
+exports.getAll = async function (request, reply) {
     try {
-        const games = await GameModel.getAll();
-        console.log(games);
+        const games = await Game.getAll();
         if (games.length < 1) {
             reply.send([]);
         }
@@ -15,12 +14,12 @@ exports.getAll = async function(request, reply) {
         in line ${err.lineNumber}`);
     }
 };
-exports.getGameById = async function(request, reply) {
+exports.getGameById = async function (request, reply) {
     try {
         const { gameId } = request.params;
-        const game = await GameModel.getById(gameId);
+        const game = await Game.getById(gameId);
         if (!game) {
-            return reply.send({ 'message': 'No game' });
+            return reply.send({ message: 'No game' });
         }
         return reply.send(game);
     } catch (err) {
@@ -30,7 +29,7 @@ exports.getGameById = async function(request, reply) {
     }
 };
 
-exports.addGame = async function(request, reply) {
+exports.addGame = async function (request, reply) {
     try {
         const {
             steamPrice,
@@ -39,7 +38,7 @@ exports.addGame = async function(request, reply) {
             imageLink,
             description,
         } = request.body;
-        const result = await GameModel.addGame(
+        const result = await Game.add(
             steamPrice,
             title,
             steamLink,
@@ -54,10 +53,10 @@ exports.addGame = async function(request, reply) {
     }
 };
 
-exports.updateGame = async function(request, reply) {
+exports.updateGame = async function (request, reply) {
     try {
         const { gameId, fields } = request.body;
-        const result = await GameModel.updateGame(gameId, fields);
+        const result = await Game.update(gameId, fields);
         return reply.send(result);
     } catch (err) {
         fastify.log.error(err);
@@ -66,10 +65,10 @@ exports.updateGame = async function(request, reply) {
     }
 };
 
-exports.deleteGame = async function(request, reply) {
+exports.deleteGame = async function (request, reply) {
     try {
         const { gameId } = request.body;
-        const result = await GameModel.deleteGame(gameId);
+        const result = await Game.delete(gameId);
         return reply.send(result);
     } catch (err) {
         fastify.log.error(err);
@@ -77,4 +76,3 @@ exports.deleteGame = async function(request, reply) {
         in line ${err.lineNumber}`);
     }
 };
-
