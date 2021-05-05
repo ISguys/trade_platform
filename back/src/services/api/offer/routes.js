@@ -1,7 +1,7 @@
 const schemes = require('./schemes');
 const { getAll, getOfferById, addOffer, deleteOffer } = require('./controller');
 
-module.exports = function (fastify, opts, done) {
+module.exports = function(fastify, opts, done) {
     // get all rows from table Offers
     fastify.get('/offer', { schema: schemes.getAll }, getAll);
 

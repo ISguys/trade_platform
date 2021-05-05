@@ -37,7 +37,7 @@ fastify.register(require('./services/api/game/routes'));
 fastify.register(require('./services/api/user/user-routes'));
 fastify.register(require('./services/api/auth/auth-routes'));
 
-fastify.listen(process.env.PORT || 3001, (err, address) => {
+fastify.listen(process.env.PORT || 3001, '0.0.0.0', (err, address) => {
     if (err) {
         fastify.log.error(err);
         process.exit(1);

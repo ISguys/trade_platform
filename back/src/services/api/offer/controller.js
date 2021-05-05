@@ -1,7 +1,7 @@
 const { default: fastify } = require('fastify');
 const Offer = require('./model');
 
-exports.getAll = async function (request, reply) {
+exports.getAll = async function(request, reply) {
     try {
         const offers = await Offer.getAll();
         if (offers.length < 1) {
@@ -15,7 +15,7 @@ exports.getAll = async function (request, reply) {
     }
 };
 
-exports.getOfferById = async function (request, reply) {
+exports.getOfferById = async function(request, reply) {
     try {
         const { offerId } = request.params;
         const offer = await Offer.getById(offerId);
@@ -30,7 +30,7 @@ exports.getOfferById = async function (request, reply) {
     }
 };
 
-exports.addOffer = async function (request, reply) {
+exports.addOffer = async function(request, reply) {
     try {
         const { creatorId, gameId, steamBotLink, price } = request.body;
         const result = await Offer.add(creatorId, gameId, steamBotLink, price);
@@ -42,7 +42,7 @@ exports.addOffer = async function (request, reply) {
     }
 };
 
-exports.deleteOffer = async function (request, reply) {
+exports.deleteOffer = async function(request, reply) {
     try {
         const { offerId } = request.body;
         const result = await Offer.delete(offerId);
