@@ -18,7 +18,8 @@ jobs:
           command: |
             docker build -t heroku-dockerize:circleci .
             docker images
-workflows:
+    working_directory: ~/back
+runworkflows:
   build-test-deploy:
     jobs:
       - build-and-test
