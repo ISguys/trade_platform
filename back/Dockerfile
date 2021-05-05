@@ -1,11 +1,22 @@
 FROM node:lts
 
-WORKDIR /app
-COPY ./package*.json ./
-RUN npm ci
-COPY . .
-RUN chown -R node:node /app
-USER node
+#RUN apk add --no-cache --update curl bash
+WORKDIR /src
 
-EXPOSE 9000
-CMD npm start
+ARG NODE_ENV=development
+ARG PORT=3001
+ENV PORT=$PORT
+
+COPY package* ./
+# Install the npm packages
+RUN npm install
+
+COPY . .
+
+### Run the image as a non-root user
+#RUN adduser -D myuser
+#USER myuser
+
+EXPOSE $PORT
+
+CMD ["npm", "run", "start"]
