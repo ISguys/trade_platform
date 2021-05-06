@@ -6,7 +6,7 @@ networks:
 services:
   web:
     build:
-      context: .
+      context: back
       dockerfile: Dockerfile
       args:
         - NODE_ENV=production
