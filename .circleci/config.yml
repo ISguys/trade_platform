@@ -4,10 +4,10 @@ orbs:
 jobs:
   build-and-test:
     executor: node/default
+    working_directory: ~/back
     steps:
       - checkout
-      - node/install-packages:
-          app-dir: ~/../back
+      - node/install-packages
       - run:
           name: Running npm test
           command: |
@@ -19,7 +19,6 @@ jobs:
           command: |
             docker build -t heroku-dockerize:circleci .
             docker images
-    working_directory: ~/back
 workflows:
   build-test-deploy:
     jobs:
