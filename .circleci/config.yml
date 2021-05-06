@@ -6,7 +6,8 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/install-packages
+      - node/install-packages:
+          app-dir: ~/back
       - run:
           name: Running npm test
           command: |
