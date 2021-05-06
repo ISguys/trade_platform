@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          app-dir: ~/back
+          app-dir: ~/../back
       - run:
           name: Running npm test
           command: |
