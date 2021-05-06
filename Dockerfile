@@ -1,7 +1,7 @@
 FROM node:lts
 
 #RUN apk add --no-cache --update curl bash
-WORKDIR /src
+WORKDIR /back
 
 ARG PORT=3001
 ENV PORT=$PORT
