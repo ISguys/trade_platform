@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Link, Route} from 'react-router-dom';
 
+import userprofile from '../userprofile';
 import Game1 from '../Game1';
 import Navbar from '../Navbar';
 import PGSwitch from '../PGSwitch';
@@ -36,12 +37,12 @@ const Header = () => {
             {" "}
             <div id="review"><div id="review1">Отзывы</div></div>
           </a>
-          <a href="https://www.youtube.com/watch?v=DLzxrzFCyOs&ab_channel=AllKindsOfStuff">
+          <Link to="/userprofile">  
             {" "}
             <div id="help">
               <div id="help1">Помощь</div>
             </div>
-          </a>
+            </Link>
             {AuthContext.isLoggedIn ? (
                 <ProfileWrapperAuthorized clicked={AuthContext.logout()} />
             ) : (
@@ -60,6 +61,7 @@ const Header = () => {
       </div>
     </div>
     <Route exact path="/Warranty" component={Warranty} />
+    <Route exact path="/userprofile" component={userprofile} />
     <Route exact path="/Game1" component={Game1} />
     <Route exact path="/">  
           <Navbar />

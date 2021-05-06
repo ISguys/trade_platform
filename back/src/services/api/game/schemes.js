@@ -1,22 +1,7 @@
 const schemes = {};
 // get
 schemes.getAll = {
-    response: {
-        200: {
-            type: 'array',
-            items: {
-                type: 'object',
-                properties: {
-                    gameId: { type: 'integer' },
-                    title: { type: 'string' },
-                    streamPrice: { type: 'number' },
-                    steamLink: { type: 'string' },
-                    imageLink: { type: 'string' },
-                    description: { type: 'string' },
-                },
-            },
-        },
-    },
+
 };
 // get
 schemes.getGameById = {
