@@ -14,7 +14,7 @@ services:
     env_file:
       - .env
     volumes:
-      - .:/src
+      - .:/back
       - /node_modules
     command: npm start
     depends_on:
