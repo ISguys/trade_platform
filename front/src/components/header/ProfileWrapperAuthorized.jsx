@@ -1,11 +1,11 @@
 import React from 'react';
 import classes from './Profile.module.css';
 
-const ProfileWrapperAuthorized = ( props ) => {
+const ProfileWrapperAuthorized = (props) => {
     console.log(props);
     return (
         <>
-            <div style={{ marginLeft: "15px" }}>
+            <div style={{ marginLeft: '15px' }}>
                 <p className={classes.Name}>
                     <a href="/">{JSON.parse(localStorage.getItem('userData')).username}</a>
                 </p>
@@ -18,6 +18,6 @@ const ProfileWrapperAuthorized = ( props ) => {
             </div>
         </>
     );
-}
+};
 
 export default ProfileWrapperAuthorized;
