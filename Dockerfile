@@ -10,7 +10,7 @@ COPY package* ./
 # Install the npm packages
 RUN npm install
 
-COPY back .
+COPY . .
 
 EXPOSE $PORT
 
