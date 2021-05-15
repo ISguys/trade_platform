@@ -29,15 +29,33 @@ exports.getGameById = async function(request, reply) {
     }
 };
 
-exports.addGame = async function(request, reply) {
+exports.gameSearch = async function(request, reply) {
+    const gameName = request.body.gameName;
     try {
-        const {
-            steamPrice,
-            title,
-            steamLink,
-            imageLink,
-            description,
-        } = request.body;
+        const games = await Game.getAll();
+        const result = games.filter((prod) => {
+            if (prod.title.indexOf(gameName) > -1) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return reply.send(result);
+    } catch (err) {
+        throw new Error(`${err.message}\n${err.name}: \
+        in line ${err.lineNumber}`);
+    }
+};
+
+exports.addGame = async function(request, reply) {
+    const {
+        steamPrice,
+        title,
+        steamLink,
+        imageLink,
+        description,
+    } = request.body;
+    try {
         const result = await Game.add(
             steamPrice,
             title,

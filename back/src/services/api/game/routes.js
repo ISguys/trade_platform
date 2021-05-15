@@ -1,5 +1,5 @@
 const schemes = require('./schemes');
-const { getAll, getGameById, addGame, deleteGame, updateGame } = require('./controller');
+const { getAll, getGameById, addGame, deleteGame, updateGame, gameSearch } = require('./controller');
 
 module.exports = function(fastify, opts, done) {
     // get all rows from table Game
@@ -10,6 +10,10 @@ module.exports = function(fastify, opts, done) {
         '/game/:gameId',
         { schema: schemes.getGameById },
         getGameById
+    );
+    fastify.post(
+        '/game/search',
+        gameSearch
     );
     // add new game
     fastify.post(
