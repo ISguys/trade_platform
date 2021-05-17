@@ -10,7 +10,7 @@ exports.setupTestEnv = function () {
     afterAll(async () => {
         // delete all test data
         const sql = `DELETE FROM "Games" WHERE
- title LIKE 'test%' AND description = 'test description'`;
+ title LIKE 'test%' AND description LIKE '%description%'`;
         await pool.query(sql);
 
         pool.end((err) => {
