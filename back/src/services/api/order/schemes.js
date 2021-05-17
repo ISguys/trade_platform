@@ -7,7 +7,7 @@ schemes.getAll = {
             items: {
                 type: 'object',
                 properties: {
-                    id: { type: 'integer' },
+                    id: { type: 'string' },
                     sellerId: { type: 'integer' },
                     buyerId: { type: 'integer' },
                     orderId: { type: 'integer' },
@@ -24,7 +24,7 @@ schemes.getOrderById = {
         type: 'object',
         required: ['id'],
         properties: {
-            id: { type: 'integer' },
+            id: { type: 'string' },
         },
     },
 
@@ -34,7 +34,7 @@ schemes.getOrderById = {
             items: {
                 type: 'object',
                 properties: {
-                    id: { type: 'integer' },
+                    id: { type: 'string' },
                     sellerId: { type: 'integer' },
                     buyerId: { type: 'integer' },
                     orderId: { type: 'integer' },
@@ -66,14 +66,6 @@ schemes.addOrder = {
 };
 //delete
 schemes.deleteOrder = {
-    body: {
-        type: 'object',
-        required: ['id'],
-        properties: {
-            id: { type: 'integer' },
-        },
-    },
-
     response: {
         200: {
             type: 'string',
