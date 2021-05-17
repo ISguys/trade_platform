@@ -1,7 +1,22 @@
 const schemes = {};
 // get
 schemes.getAll = {
-
+    response: {
+        200: {
+            type: 'array',
+            items: {
+                type: 'object',
+                properties: {
+                    gameId: { type: 'string' },
+                    title: { type: 'string' },
+                    streamPrice: { type: 'number' },
+                    steamLink: { type: 'string' },
+                    imageLink: { type: 'string' },
+                    description: { type: 'string' },
+                },
+            },
+        },
+    },
 };
 // get
 schemes.getGameById = {
@@ -9,7 +24,7 @@ schemes.getGameById = {
         type: 'object',
         required: ['gameId'],
         properties: {
-            gameId: { type: 'integer' },
+            gameId: { type: 'string' },
         },
     },
 
@@ -19,7 +34,7 @@ schemes.getGameById = {
             items: {
                 type: 'object',
                 properties: {
-                    gameId: { type: 'integer' },
+                    gameId: { type: 'string' },
                     title: { type: 'string' },
                     streamPrice: { type: 'number' },
                     steamLink: { type: 'string' },
@@ -60,10 +75,9 @@ schemes.addGame = {
 schemes.updateGame = {
     body: {
         type: 'object',
-        required: ['gameId', 'fields'],
+        required: ['fields'],
         properties: {
-            gameId: { type: 'integer' },
-            fields: { type: 'object' },
+            fields: { type: 'array' },
         },
     },
 
@@ -75,14 +89,6 @@ schemes.updateGame = {
 };
 //delete
 schemes.deleteGame = {
-    body: {
-        type: 'object',
-        required: ['gameId'],
-        properties: {
-            gameId: { type: 'integer' },
-        },
-    },
-
     response: {
         200: {
             type: 'string',
