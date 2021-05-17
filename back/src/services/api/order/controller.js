@@ -18,7 +18,7 @@ exports.getAll = async function (request, reply) {
 
 exports.getOrderById = async function (request, reply) {
     try {
-        const { id } = request.params;
+        const { id } = request.query;
         const order = await Order.getById(id);
         if (!order) {
             return reply.send({ message: 'No order' });
@@ -46,7 +46,7 @@ exports.addOrder = async function (request, reply) {
 
 exports.deleteOrder = async function (request, reply) {
     try {
-        const { Id } = request.body;
+        const { Id } = request.query;
         const result = await Order.delete(Id);
         return reply.send(result);
     } catch (err) {
