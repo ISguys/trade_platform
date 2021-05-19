@@ -15,7 +15,7 @@ describe('Testing game', () => {
         const sql = `DELETE FROM "Games" WHERE
  title LIKE 'test%'`;
         await pool.query(sql);
-
+        await fastify.close();
         await pool.end();
     });
 
