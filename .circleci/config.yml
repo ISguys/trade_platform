@@ -10,11 +10,11 @@ jobs:
       - run:
           name: Running npm install
           command: |
-            npm ci --forceExit
+            npm ci
       - run: 
           name: Running npm test
           command: |
-            npm run test
+            npm run test --forceExit
       - setup_remote_docker:
           version: 19.03.8
       - run:
