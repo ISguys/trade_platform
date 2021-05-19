@@ -7,7 +7,10 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/install-packages
+      - run:
+          name: Running npm install
+          command: |
+            npm install
       - run: 
           name: Running npm test
           command: |
