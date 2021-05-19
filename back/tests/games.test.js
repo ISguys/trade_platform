@@ -17,8 +17,6 @@ describe('Testing game', () => {
         await pool.query(sql);
 
         await pool.end();
-        setTimeout(() => process.exit(), 1000);
-
     });
 
     test('it should add a new game to the database', async () => {
