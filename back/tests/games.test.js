@@ -10,14 +10,15 @@ const [fastify, pool] = setupTestEnv();
 describe('Testing game', () => {
     beforeEach(async () => {});
 
-    afterAll(async (done) => {
+    afterAll(async () => {
         // delete all test data
         const sql = `DELETE FROM "Games" WHERE
  title LIKE 'test%' AND description LIKE '%description%'`;
         await pool.query(sql);
 
         await pool.end();
-        done();
+        setTimeout(() => process.exit(), 1000);
+
     });
 
     test('it should add a new game to the database', async () => {
