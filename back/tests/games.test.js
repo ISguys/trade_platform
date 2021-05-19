@@ -26,7 +26,7 @@ describe('Testing game', () => {
             title: 'test title',
             steamLink: 'test url',
             imageLink: 'test image link',
-            description: 'test description for adding',
+            description: 'test description',
         };
 
         // send request
@@ -45,13 +45,14 @@ describe('Testing game', () => {
         expect(response.body).toBe('success');
     });
 
-    test('it should throw an error "Bad request", testing getAll', async () => {
+    test('it should throw an error "Bad request", testing add game', async () => {
         // prepare test data
         const inputData = {
             steamPrice: 100,
             title: 'test title',
             steamLink: 'test url',
             imageLink: 'test image link',
+
         };
 
         // send request
