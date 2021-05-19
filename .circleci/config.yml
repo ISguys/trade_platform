@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Running npm install
           command: |
-            npm run test --forceExit
+            npm ci --forceExit
       - run: 
           name: Running npm test
           command: |
