@@ -6,7 +6,20 @@ const Game = require('../src/services/api/game/model');
 require('dotenv').config();
 const [fastify, pool] = setupTestEnv();
 
+
 describe('Testing game', () => {
+    beforeEach(async () => {});
+
+    afterAll(async (done) => {
+        // delete all test data
+        const sql = `DELETE FROM "Games" WHERE
+ title LIKE 'test%' AND description LIKE '%description%'`;
+        await pool.query(sql);
+
+        await pool.end();
+        done();
+    });
+
     test('it should add a new game to the database', async () => {
         // prepare test data
         const inputData = {
@@ -160,4 +173,7 @@ describe('Testing game', () => {
         expect(response.statusCode).toBe(200);
         expect(response.body).toBe('success');
     });
+
+
 });
+
