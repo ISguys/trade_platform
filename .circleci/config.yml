@@ -7,11 +7,14 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/install-packages
+      - run:
+          name: Running npm install
+          command: |
+            npm ci
       - run: 
           name: Running npm test
           command: |
-            npm run test
+            CI=true npm run test --exit --forceExit
       - setup_remote_docker:
           version: 19.03.8
       - run:

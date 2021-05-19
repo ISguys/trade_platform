@@ -6,7 +6,7 @@ module.exports = class User {
         this.id = v4();
         this.steamUsername = steamUsername;
         this.steamId = steamId;
-        this.tradeLink = ' \'https://steamcommunity.com\' ';
+        this.tradeLink = " 'https://steamcommunity.com' ";
         this.balance = 0;
         this.avatar = avatar;
         this.inventory = '';
@@ -22,7 +22,7 @@ module.exports = class User {
     static async findById(userId) {
         const sql = `SELECT * FROM "Users" WHERE "steam_id"='${userId}'`;
         const result = await pool.query(sql);
-        return result.rows[0];
+        return result.rows;
     }
 
     async save() {

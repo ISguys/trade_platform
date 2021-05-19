@@ -15,7 +15,7 @@ exports.login = async (req, reply) => {
         }
         const token = jwt.sign({ id: user.id, username: user.steamUsername },
             process.env.SECRET, {
-                expiresIn: '2h',
+                expiresIn: '12h',
             });
 
         return reply.view('success', {

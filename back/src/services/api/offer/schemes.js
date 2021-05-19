@@ -7,7 +7,7 @@ schemes.getAll = {
             items: {
                 type: 'object',
                 properties: {
-                    orderId: { type: 'integer' },
+                    orderId: { type: 'string' },
                     creatorId: { type: 'integer' },
                     orderDate: { type: ['string', null] },
                     gameId: { type: 'integer' },
@@ -27,7 +27,7 @@ schemes.getOfferById = {
         type: 'object',
         required: ['orderId'],
         properties: {
-            orderId: { type: 'integer' },
+            orderId: { type: 'string' },
         },
     },
 
@@ -37,7 +37,7 @@ schemes.getOfferById = {
             items: {
                 type: 'object',
                 properties: {
-                    orderId: { type: 'integer' },
+                    orderId: { type: 'string' },
                     creatorId: { type: 'integer' },
                     orderDate: { type: ['string', null] },
                     gameId: { type: 'integer' },
@@ -72,14 +72,6 @@ schemes.addOffer = {
 };
 //delete
 schemes.deleteOffer = {
-    body: {
-        type: 'object',
-        required: ['orderId'],
-        properties: {
-            orderId: { type: 'integer' },
-        },
-    },
-
     response: {
         200: {
             type: 'string',
