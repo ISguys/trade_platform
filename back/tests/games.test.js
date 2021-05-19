@@ -13,7 +13,7 @@ describe('Testing game', () => {
     afterAll(async () => {
         // delete all test data
         const sql = `DELETE FROM "Games" WHERE
- title LIKE 'test%' AND description LIKE '%description%'`;
+ title LIKE 'test%'`;
         await pool.query(sql);
 
         await pool.end();
