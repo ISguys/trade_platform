@@ -16,10 +16,11 @@ exports.getGameById = async function(request, reply) {
     try {
         const { gameId } = request.query;
         const game = await Game.getById(gameId);
-        if (!game) {
+        console.log(game)
+        if (!game[0]) {
             return reply.send({ message: 'No game' });
         }
-        return reply.send(game);
+        return reply.send(game[0]);
     } catch (err) {
         throw new Error(`${err.message}\n${err.name}: \
         in line ${err.lineNumber}`);
