@@ -5,7 +5,7 @@ const User = require('../user/user-model');
 exports.login = async (req, reply) => {
     try {
         let user = await User.findById(req.user.id);
-        if (!user) {
+        if (user.length < 1) {
             user = new User(
                 req.user.displayName,
                 req.user.id,
@@ -13,6 +13,8 @@ exports.login = async (req, reply) => {
             );
             await user.save();
         }
+        console.log(user);
+        user = user[0];
         const token = jwt.sign({ id: user.id, username: user.steamUsername },
             process.env.SECRET, {
                 expiresIn: '12h',
@@ -20,7 +22,7 @@ exports.login = async (req, reply) => {
 
         return reply.view('success', {
             id: user.id,
-            username: user.steamUsername,
+            username: user.steam_name,
             jwtToken: token,
             clientUrl: process.env.FRONT_URL
         });
