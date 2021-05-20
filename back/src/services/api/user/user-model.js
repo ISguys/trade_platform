@@ -4,9 +4,9 @@ const { v4 } = require('uuid');
 module.exports = class User {
     constructor(steamUsername, steamId, avatar) {
         this.id = v4();
-        this.steamUsername = steamUsername;
+        this.steam_name = steamUsername;
         this.steamId = steamId;
-        this.tradeLink = " 'https://steamcommunity.com' ";
+        this.tradeLink = ' \'https://steamcommunity.com\' ';
         this.balance = 0;
         this.avatar = avatar;
         this.inventory = '';
@@ -29,7 +29,7 @@ module.exports = class User {
         const sql =
             // eslint-disable-next-line max-len
             'INSERT INTO "Users" (id, steam_name, trade_link, balance, steam_id, ava_link, inventory, role)' +
-            ` VALUES ('${this.id}','${this.steamUsername}', ${this.tradeLink}, ${this.balance},` +
+            ` VALUES ('${this.id}','${this.steam_name}', ${this.tradeLink}, ${this.balance},` +
             `'${this.steamId}', '${this.avatar}', '{${this.inventory}}', '${this.role}')`;
         return pool.query(sql);
     }
