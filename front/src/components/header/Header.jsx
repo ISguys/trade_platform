@@ -43,7 +43,7 @@ const { isLoggedIn, logout } = useContext(AuthContext);
                         <Link to="/userprofile">
                             {' '}
                             <div id="help">
-                                <div id="help1">Помощь</div>
+                                <div id="help1">Профиль</div>
                             </div>
                         </Link>
                         {isLoggedIn ? (
@@ -57,7 +57,7 @@ const { isLoggedIn, logout } = useContext(AuthContext);
                             <SignInButton />
                         )
                         }
-                        <div type="text/javascript" id="hde-kb-widget" data-host="hatterkeys.helpdeskeddy.com" data-lang="ru"></div>
+                      <div type="text/javascript" id="hde-kb-widget" data-host="hatterkeys.helpdeskeddy.com" data-lang="ru"></div>
                         <div id="site_title">
                             <div>
                                 <a href="https://www.youtube.com/watch?v=DLzxrzFCyOs&ab_channel=AllKindsOfStuff">
