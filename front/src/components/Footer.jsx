@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Footer = () => (
+    
     <div id="content_wrapper">
+        <div type="text/javascript" id="hde-kb-widget" data-host="hatterkeys.helpdeskeddy.com" data-lang="ru"></div>
         <div id="footer_wrapper">
             <div id="footer">
                 <div className="sub_content">

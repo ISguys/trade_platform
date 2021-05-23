@@ -4,10 +4,10 @@ import { BrowserRouter, Link, Route } from 'react-router-dom';
 import userprofile from '../userprofile';
 import Game1 from '../Game1';
 //import Navbar from '../Navbar';
-import PGSwitch from '../PGSwitch';
-import Sidebar from '../Sidebar';
-import GameList from '../GameList';
-import Footer from '../Footer';
+//import PGSwitch from '../PGSwitch';
+//import Sidebar from '../Sidebar';
+//import GameList from '../GameList';
+//import Footer from '../Footer';
 import Warranty from '../Warranty';
 import SignInButton from './SignInButton';
 import ProfileWrapperAuthorized from './ProfileWrapperAuthorized';
@@ -16,7 +16,7 @@ import sitelogo from '../../assets/logo.png';
 
 
 const Header = () => {
-    const { isLoggedIn, logout } = useContext(AuthContext);
+const { isLoggedIn, logout } = useContext(AuthContext);
 
    return (
     <>
@@ -57,7 +57,7 @@ const Header = () => {
                             <SignInButton />
                         )
                         }
-
+                        <div type="text/javascript" id="hde-kb-widget" data-host="hatterkeys.helpdeskeddy.com" data-lang="ru"></div>
                         <div id="site_title">
                             <div>
                                 <a href="https://www.youtube.com/watch?v=DLzxrzFCyOs&ab_channel=AllKindsOfStuff">

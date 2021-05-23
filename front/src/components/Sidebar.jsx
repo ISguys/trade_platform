@@ -4,6 +4,7 @@ import sixbrickskatalog from './../assets/6brickskatalog.png';
 
 const Sidebar = () => (
     <div id="frame1">
+        <div type="text/javascript" id="hde-kb-widget" data-host="hatterkeys.helpdeskeddy.com" data-lang="ru"></div>
         <div id="aside">
             <div id="sections">
                 <img

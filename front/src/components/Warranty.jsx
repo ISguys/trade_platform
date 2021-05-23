@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
 
 const Warranty = () => (
     <>
+    <div type="text/javascript" id="hde-kb-widget" data-host="hatterkeys.helpdeskeddy.com" data-lang="ru"></div>
         <div id="warrantypage">
             <div id="warrantytext1">
                 {' '}

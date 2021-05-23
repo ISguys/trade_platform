@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 
 const UserProfile = () => (
     <>
+    <div type="text/javascript" id="hde-kb-widget" data-host="hatterkeys.helpdeskeddy.com" data-lang="ru"></div>
         <div id="gamepage">
 
             <div id="frame2">
@@ -13,6 +14,7 @@ const UserProfile = () => (
             <div id="profilename">★†SNIPĖR CÆT†★</div>
             <div id="Alloffers1"> Ссылка на обмен:</div>
             <div id="lookinsteam1"><input size="40"/></div>
+            <div id="lookinsteam2"><input type="submit" value="Cохранить" id="searchblank1"/></div>
             <div id="genres1"> Ваши игры на продажу:</div>
             <div id="description1"></div>
 
