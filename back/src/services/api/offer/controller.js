@@ -13,7 +13,7 @@ exports.getAll = async function(request, reply) {
     }
 };
 
-exports.getByName = async (request, reply) => {
+exports.getByGame = async (request, reply) => {
     const { gameId } = request.params;
     try {
         const offers = await Offer.getByGame(gameId);

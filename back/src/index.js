@@ -38,6 +38,7 @@ fastifyPassport.use(
 fastify.register(require('./services/api/auth/plugins/auth-plugin'));
 // routes
 fastify.register(require('./services/api/game/routes'));
+fastify.register(require('./services/api/offer/routes'));
 fastify.register(require('./services/api/user/user-routes'));
 fastify.register(require('./services/api/auth/auth-routes'));
 
