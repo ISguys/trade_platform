@@ -20,14 +20,15 @@ const SignInButton = () => {
 
 
 
-    useEffect(() => {
-        console.log('mb here?');
+       useEffect(() => {
+
         window.addEventListener('message', (event) => {
-            console.log('mb here?2');
+
             if (event.origin !== `${backendurl}`) return;
-            console.log('here');
+
             const { token, ok, username, id } = event.data;
             console.log({ token, ok, username, id });
+
             if (ok) {
                 localStorage.setItem('userData', JSON.stringify({
                     userId: id,

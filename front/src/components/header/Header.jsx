@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 
 import userprofile from '../userprofile';
@@ -14,7 +14,11 @@ import ProfileWrapperAuthorized from './ProfileWrapperAuthorized';
 import { AuthContext } from '../../context/auth-context';
 import sitelogo from '../../assets/logo.png';
 
-const Header = () => (
+
+const Header = () => {
+    const { isLoggedIn, logout } = useContext(AuthContext);
+
+   return (
     <>
         <BrowserRouter>
             <div id="site_title_bar_wrapper">
@@ -42,8 +46,13 @@ const Header = () => (
                                 <div id="help1">Помощь</div>
                             </div>
                         </Link>
-                        {AuthContext.isLoggedIn ? (
-                            <ProfileWrapperAuthorized clicked={AuthContext.logout()} />
+                        {isLoggedIn ? (
+
+                            <>{console.log('here')}
+                            <p>asd</p>
+                            <ProfileWrapperAuthorized clicked={logout} />
+                            </>
+
                         ) : (
                             <SignInButton />
                         )
@@ -62,18 +71,13 @@ const Header = () => (
             <Route exact path="/Warranty" component={Warranty} />
             <Route exact path="/userprofile" component={userprofile} />
             <Route exact path="/Game1" component={Game1} />
-            <Route exact path="/">
-                <Sidebar />
-                <GameList />
-                <PGSwitch />
-                <Footer />
-            </Route>
+
         </BrowserRouter>
 
 
 
 
     </>
-);
+)};
 
 export default Header;

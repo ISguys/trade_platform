@@ -5,7 +5,7 @@ module.exports = function(fastify, opts, done) {
     // get all rows from table Offers
     fastify.get('/offer', { schema: schemes.getAll }, getAll);
 
-    fastify.get('/offer/gameId', getByName);
+    fastify.get('/offer/:gameId', getByName);
     // get offer by id
     fastify.get(
         '/offer/:orderId',

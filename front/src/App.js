@@ -3,7 +3,11 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/header/Header';
 import { AuthContext } from './context/auth-context';
 import './App.css';
-
+import Sidebar from "./components/Sidebar";
+import GameList from "./components/GameList";
+import PGSwitch from "./components/PGSwitch";
+import Footer from "./components/Footer";
+import Game1 from "./components/Game1";
 let logoutTimer;
 
 function App() {
@@ -48,21 +52,28 @@ function App() {
     },
     [login]);
 
-    return (
-        <AuthContext.Provider value={
-            {
-                isLoggedIn: !!tok,
-                token: tok,
-                userId: uid,
-                login,
-                logout
-            }
-        }>
-            <BrowserRouter>
-                <Route render={() => (<Header />)} ></Route>
-            </BrowserRouter>
-        </AuthContext.Provider>
-    );
+    return <AuthContext.Provider value={
+        {
+            isLoggedIn: !!tok,
+            token: tok,
+            userId: uid,
+            login,
+            logout
+        }
+    }>
+        <BrowserRouter>
+            <Route render={() => (<Header />)} ></Route>
+            <Route exact path="/">
+                <Sidebar />
+                <GameList />
+                <PGSwitch />
+                <Footer />
+            </Route>
+            <Route path="/games/:gameId">
+                <Game1 />
+            </Route>
+        </BrowserRouter>
+    </AuthContext.Provider>;
 }
 
 export default App;
