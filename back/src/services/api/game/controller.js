@@ -14,13 +14,12 @@ exports.getAll = async function(request, reply) {
 };
 exports.getGameById = async function(request, reply) {
     try {
-        const { gameId } = request.query;
+        const { gameId } = request.params;
         const game = await Game.getById(gameId);
-        console.log(game)
-        if (!game[0]) {
+        if (!game) {
             return reply.send({ message: 'No game' });
         }
-        return reply.send(game[0]);
+        return reply.send(game);
     } catch (err) {
         throw new Error(`${err.message}\n${err.name}: \
         in line ${err.lineNumber}`);

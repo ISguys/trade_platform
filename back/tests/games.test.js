@@ -87,7 +87,7 @@ describe('Testing game', () => {
         const expectedData = await Game.getById('2');
         // send request
         const response = await fastify.inject({
-            url: '/game/?gameId=2',
+            url: '/game/2',
             method: 'GET',
         });
         // check data
@@ -129,7 +129,7 @@ describe('Testing game', () => {
 
         // send request
         const response = await fastify.inject({
-            url: `/game/?gameId=${gameId}`,
+            url: `/game/${gameId}`,
             method: 'PUT',
             headers: {
                 'content-Type': 'application/json',
