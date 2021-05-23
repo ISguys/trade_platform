@@ -1,14 +1,19 @@
 /* eslint-disable no-undef */
 const { v4 } = require('uuid');
-
+const jwt = require('jsonwebtoken');
 const { setupTestEnv } = require('./testEnv');
 const Game = require('../src/services/api/game/model');
 require('dotenv').config();
 const [fastify, pool] = setupTestEnv();
 
-
+let token = null;
 describe('Testing game', () => {
-    beforeEach(async () => {});
+    beforeEach(async () => {
+        token = jwt.sign({ id: 'test', username: 'test' },
+            process.env.SECRET, {
+                expiresIn: '12h',
+            });
+    });
 
     afterAll(async () => {
         // delete all test data
@@ -35,7 +40,7 @@ describe('Testing game', () => {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json',
-                authorization: `Bearer ${process.env.TOKEN}`,
+                authorization: `Bearer ${token}`,
             },
             payload: JSON.stringify(inputData),
         });
@@ -61,7 +66,7 @@ describe('Testing game', () => {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json',
-                authorization: `Bearer ${process.env.TOKEN}`,
+                authorization: `Bearer ${token}`,
             },
             payload: JSON.stringify(inputData),
         });
@@ -133,7 +138,7 @@ describe('Testing game', () => {
             method: 'PUT',
             headers: {
                 'content-Type': 'application/json',
-                authorization: `Bearer ${process.env.TOKEN}`,
+                authorization: `Bearer ${token}`,
             },
             payload: JSON.stringify(inputData),
         });
