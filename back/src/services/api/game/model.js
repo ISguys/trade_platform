@@ -2,8 +2,9 @@ const pool = require('../../../db/connection');
 const { v4 } = require('uuid');
 
 class Game {
-    static async getAll() {
-        const sql = 'SELECT * FROM "Games"';
+    static async getAll(page) {
+        const sql = `SELECT * FROM "Games" ORDER BY game_id ASC\
+ OFFSET ${12 * (page - 1)} LIMIT 12`;
         const rows = await pool.query(sql);
         return rows.rows;
     }

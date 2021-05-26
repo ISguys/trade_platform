@@ -9,10 +9,10 @@ const {
 } = require('./controller');
 
 module.exports = function (fastify, opts, done) {
-    // get all rows from table Game
-    fastify.get('/game', /*{ schema: schemes.getAll },*/ getAll);
+    // get page of games from table Game
+    fastify.get('/game/page/:page', { schema: schemes.getAll }, getAll);
     // get game by id
-    fastify.get('/game/:gameId', /*{ schema: schemes.getGameById },*/ getGameById);
+    fastify.get('/game/:gameId', { schema: schemes.getGameById }, getGameById);
     fastify.post('/game/search', gameSearch);
     // add new game
     fastify.post(
