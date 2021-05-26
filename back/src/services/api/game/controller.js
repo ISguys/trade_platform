@@ -15,7 +15,7 @@ exports.getAll = async function (request, reply) {
 };
 exports.getGameById = async function (request, reply) {
     try {
-        const { gameId } = request.query;
+        const { gameId } = request.params;
         const game = await Game.getById(gameId);
         if (!game) {
             return reply.send({ message: 'No game' });
@@ -71,7 +71,7 @@ exports.addGame = async function (request, reply) {
 exports.updateGame = async function (request, reply) {
     try {
         const { fields } = request.body;
-        const { gameId } = request.query;
+        const { gameId } = request.params;
         const result = await Game.update(gameId, fields[0]);
         return reply.send(result);
     } catch (err) {
@@ -82,7 +82,7 @@ exports.updateGame = async function (request, reply) {
 
 exports.deleteGame = async function (request, reply) {
     try {
-        const { gameId } = request.query;
+        const { gameId } = request.params;
         const result = await Game.delete(gameId);
         return reply.send(result);
     } catch (err) {

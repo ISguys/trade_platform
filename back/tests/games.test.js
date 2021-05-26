@@ -49,7 +49,8 @@ describe('Testing game', () => {
         expect(response.body).toBe('success');
     });
 
-    test('it should throw an error "Bad request", testing add game', async () => {
+    test('it should throw an error "Bad request",\
+ testing add game', async () => {
         // prepare test data
         const inputData = {
             steamPrice: 100,
@@ -94,10 +95,9 @@ describe('Testing game', () => {
 
         // send request
         const response = await fastify.inject({
-            url: '/game/page/?page=2',
+            url: '/game/page?page=2',
             method: 'GET',
         });
-
         // check data
         expect(response.statusCode).toBe(200);
         expect(JSON.parse(response.body)[0].title).toBe(expectedData[0].title);
@@ -108,7 +108,7 @@ describe('Testing game', () => {
         const expectedData = await Game.getById('2');
         // send request
         const response = await fastify.inject({
-            url: '/game/?gameId=2',
+            url: '/game/2',
             method: 'GET',
         });
 
@@ -120,7 +120,7 @@ describe('Testing game', () => {
     test('it should return empty list', async () => {
         // send request
         const response = await fastify.inject({
-            url: '/game/?gameId=000000',
+            url: '/game/000000',
             method: 'GET',
         });
 
@@ -152,7 +152,7 @@ describe('Testing game', () => {
 
         // send request
         const response = await fastify.inject({
-            url: `/game/?gameId=${gameId}`,
+            url: `/game/${gameId}`,
             method: 'PUT',
             headers: {
                 'content-Type': 'application/json',
@@ -184,7 +184,7 @@ describe('Testing game', () => {
 
         // send request
         const response = await fastify.inject({
-            url: `/game/?gameId=${gameId}`,
+            url: `/game/${gameId}`,
             method: 'DELETE',
             headers: {
                 'content-Type': 'application/json',

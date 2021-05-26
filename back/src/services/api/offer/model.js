@@ -15,23 +15,22 @@ class Offer {
     }
 
     static async getById(offerId) {
-        const sql = `SELECT * FROM "Offers" WHERE id = '${offerId}'`;
+        const sql = `SELECT * FROM "Offers" WHERE order_id = '${offerId}'`;
         const result = await pool.query(sql);
         return result.rows;
     }
 
     static async add(creatorId, gameId, steamBotLink, price) {
-
         const args = [v4(), creatorId, gameId, steamBotLink, price];
         const sql =
             'INSERT INTO "Offers"(order_id, creator_id, game_id,\
- steam_bot_link, price, created_at) VALUES ($1, $2, $3, $4, $5,)';
+ steam_bot_link, price) VALUES ($1, $2, $3, $4, $5)';
         await pool.query(sql, args);
         return 'success';
     }
 
     static async delete(offerId) {
-        const sql = `DELETE FROM "Offers" WHERE id = '${offerId}'`;
+        const sql = `DELETE FROM "Offers" WHERE order_id = '${offerId}'`;
         await pool.query(sql);
         return 'success';
     }
@@ -43,11 +42,10 @@ class Offer {
     }
 
     static async close(offerId, buyerId) {
-        const date = new Date().toISOString().split('T')[0];
-        const args = [buyerId, date, offerId];
+        const args = [buyerId, offerId];
         const sql =
-            'UPDATE "Offers" SET status = FALSE,\
- buyer_id = \'$1\', order_date = \'$2\' WHERE order_id = \'$3\'';
+            "UPDATE \"Offers\" SET status = FALSE,\
+ buyer_id = '$1', order_date = NOW() WHERE order_id = '$2'";
         await pool.query(sql, args);
         return 'success';
     }

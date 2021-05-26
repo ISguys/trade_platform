@@ -27,14 +27,6 @@ schemes.getAll = {
 };
 // get
 schemes.getGameById = {
-    querystring: {
-        type: 'object',
-        required: ['gameId'],
-        properties: {
-            gameId: { type: 'string' },
-        },
-    },
-
     response: {
         200: {
             type: 'array',
@@ -80,13 +72,6 @@ schemes.addGame = {
 };
 // put
 schemes.updateGame = {
-    querystring: {
-        type: 'object',
-        required: ['gameId'],
-        properties: {
-            gameId: { type: 'string' },
-        },
-    },
     body: {
         type: 'object',
         required: ['fields'],
@@ -103,13 +88,6 @@ schemes.updateGame = {
 };
 //delete
 schemes.deleteGame = {
-    querystring: {
-        type: 'object',
-        required: ['gameId'],
-        properties: {
-            gameId: { type: 'string' },
-        },
-    },
     response: {
         200: {
             type: 'string',

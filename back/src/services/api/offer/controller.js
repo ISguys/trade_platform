@@ -1,6 +1,6 @@
 const Offer = require('./model');
 
-exports.getAll = async function(request, reply) {
+exports.getAll = async function (request, reply) {
     try {
         const offers = await Offer.getAll();
         if (offers.length < 1) {
@@ -27,10 +27,10 @@ exports.getByGame = async (request, reply) => {
     }
 };
 
-exports.getOfferById = async function(request, reply) {
+exports.getOfferById = async function (request, reply) {
     try {
-        const { offerId } = request.params;
-        const offer = await Offer.getById(offerId);
+        const { orderId } = request.params;
+        const offer = await Offer.getById(orderId);
         if (!offer) {
             return reply.send({ message: 'No offer' });
         }
@@ -41,7 +41,7 @@ exports.getOfferById = async function(request, reply) {
     }
 };
 
-exports.addOffer = async function(request, reply) {
+exports.addOffer = async function (request, reply) {
     try {
         const { creatorId, gameId, steamBotLink, price } = request.body;
         const result = await Offer.add(creatorId, gameId, steamBotLink, price);
@@ -52,10 +52,10 @@ exports.addOffer = async function(request, reply) {
     }
 };
 
-exports.deleteOffer = async function(request, reply) {
+exports.deleteOffer = async function (request, reply) {
     try {
-        const { offerId } = request.params;
-        const result = await Offer.delete(offerId);
+        const { orderId } = request.params;
+        const result = await Offer.delete(orderId);
         return reply.send(result);
     } catch (err) {
         throw new Error(`${err.message}\n${err.name}: \
