@@ -15,8 +15,8 @@ exports.getAll = async function (request, reply) {
 };
 exports.getGameById = async function (request, reply) {
     try {
-        const { gameId } = request.params;
-        const game = await Game.getById(gameId);
+        const { gameid } = request.params;
+        const game = await Game.getById(gameid);
         if (!game) {
             return reply.send({ message: 'No game' });
         }
@@ -47,19 +47,19 @@ exports.gameSearch = async function (request, reply) {
 
 exports.addGame = async function (request, reply) {
     const {
-        steamPrice,
+        steamprice,
         title,
-        steamLink,
-        imageLink,
+        steamlink,
+        imagelink,
         description,
     } = request.body;
     try {
         const result = await Game.add(
-            steamPrice,
+            steamprice,
             title,
-            steamLink,
-            imageLink,
-            description
+            steamlink,
+            imagelink,
+            description,
         );
         return reply.send(result);
     } catch (err) {
@@ -71,8 +71,8 @@ exports.addGame = async function (request, reply) {
 exports.updateGame = async function (request, reply) {
     try {
         const { fields } = request.body;
-        const { gameId } = request.params;
-        const result = await Game.update(gameId, fields[0]);
+        const { gameid } = request.params;
+        const result = await Game.update(gameid, fields[0]);
         return reply.send(result);
     } catch (err) {
         throw new Error(`${err.message}\n${err.name}: \
@@ -82,8 +82,8 @@ exports.updateGame = async function (request, reply) {
 
 exports.deleteGame = async function (request, reply) {
     try {
-        const { gameId } = request.params;
-        const result = await Game.delete(gameId);
+        const { gameid } = request.params;
+        const result = await Game.delete(gameid);
         return reply.send(result);
     } catch (err) {
         throw new Error(`${err.message}\n${err.name}: \

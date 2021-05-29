@@ -10,29 +10,30 @@ const {
 
 module.exports = function (fastify, opts, done) {
     // get all rows from table Offers
-    fastify.get('/offer', /*{ schema: schemes.getAll },*/ getAll);
+    fastify.get('/offer', { schema: schemes.getAll }, getAll);
 
-    fastify.get('/offer/byGame/:gameId', getByGame);
+    fastify.get('/offer/byGame/:gameid',
+        { schema: schemes.getByGame }, getByGame);
     // get offer by id
     fastify.get(
-        '/offer/:orderId',
-        //{ schema: schemes.getOfferById },
+        '/offer/:orderid',
+        { schema: schemes.getOfferById },
         getOfferById
     );
     // add new offer
     fastify.post(
         '/offer/create',
         {
-            //schema: schemes.addOffer,
+            schema: schemes.addOffer,
             preValidation: [fastify.tokenValidation],
         },
         addOffer
     );
     // delete offer
     fastify.delete(
-        '/offer/:orderId',
+        '/offer/:orderid',
         {
-            //schema: schemes.deleteOffer,
+            schema: schemes.deleteOffer,
             preValidation: [fastify.tokenValidation],
         },
         deleteOffer
