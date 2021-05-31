@@ -1,6 +1,6 @@
 const Game = require('./model');
 
-exports.getAll = async function (request, reply) {
+exports.getAll = async function(request, reply) {
     try {
         const { page } = request.query;
         const games = await Game.getAll(page);
@@ -13,7 +13,7 @@ exports.getAll = async function (request, reply) {
         in line ${err.lineNumber}`);
     }
 };
-exports.getGameById = async function (request, reply) {
+exports.getGameById = async function(request, reply) {
     try {
         const { gameId } = request.params;
         const game = await Game.getById(gameId);
@@ -27,7 +27,7 @@ exports.getGameById = async function (request, reply) {
     }
 };
 
-exports.gameByImage = async function (request, reply) {
+exports.gameByImage = async function(request, reply) {
     try {
         const { gameImg } = request.body;
 
@@ -42,7 +42,7 @@ exports.gameByImage = async function (request, reply) {
     }
 };
 
-exports.gameSearch = async function (request, reply) {
+exports.gameSearch = async function(request, reply) {
     const gameName = request.body.gameName;
     try {
         const games = await Game.getAll();
@@ -60,7 +60,7 @@ exports.gameSearch = async function (request, reply) {
     }
 };
 
-exports.addGame = async function (request, reply) {
+exports.addGame = async function(request, reply) {
     const {
         steamPrice,
         title,
@@ -83,7 +83,7 @@ exports.addGame = async function (request, reply) {
     }
 };
 
-exports.updateGame = async function (request, reply) {
+exports.updateGame = async function(request, reply) {
     try {
         const { fields } = request.body;
         const { gameId } = request.params;
@@ -95,7 +95,7 @@ exports.updateGame = async function (request, reply) {
     }
 };
 
-exports.deleteGame = async function (request, reply) {
+exports.deleteGame = async function(request, reply) {
     try {
         const { gameId } = request.params;
         const result = await Game.delete(gameId);
