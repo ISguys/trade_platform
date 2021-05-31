@@ -87,7 +87,7 @@ describe('Testing game', () => {
                 'test description',
             ];
             const sqlInsert =
-                'INSERT INTO "Games"(game_id, steam_price, title,\
+                'INSERT INTO "Games"(gameid, steam_price, title,\
     steam_link, image_link, description) VALUES ($1, $2, $3, $4, $5, $6)';
             await pool.query(sqlInsert, args);
         }
@@ -141,7 +141,7 @@ describe('Testing game', () => {
             'test description for update',
         ];
         const sqlInsert =
-            'INSERT INTO "Games"(game_id, steam_price, title,\
+            'INSERT INTO "Games"(gameid, steam_price, title,\
  steam_link, image_link, description) VALUES ($1, $2, $3, $4, $5, $6)';
         await pool.query(sqlInsert, args);
 
@@ -178,7 +178,7 @@ describe('Testing game', () => {
             'test description for deleting',
         ];
         const sqlInsert =
-            'INSERT INTO "Games"(game_id, steam_price, title,\
+            'INSERT INTO "Games"(gameid, steam_price, title,\
  steam_link, image_link, description) VALUES ($1, $2, $3, $4, $5, $6)';
         await pool.query(sqlInsert, args);
 
