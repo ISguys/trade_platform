@@ -1,3 +1,4 @@
+
 const Game = require('./model');
 
 exports.getAll = async function(request, reply) {
@@ -105,3 +106,5 @@ exports.deleteGame = async function(request, reply) {
         in line ${err.lineNumber}`);
     }
 };
+
+
