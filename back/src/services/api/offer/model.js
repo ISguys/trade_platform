@@ -3,17 +3,22 @@ const { v4 } = require('uuid');
 
 class Offer {
     static async getAll() {
-        const sql = 'SELECT * FROM "Offers"';
+        const sql = 'SELECT * FROM "Offers" inner join "Users" on "Offers"."creator_id" = "Users"."id"';
         const rows = await pool.query(sql);
         return rows.rows;
     }
 
     static async getByGame(gameId) {
-        const sql = `SELECT * FROM "Offers" WHERE game_id = '${gameId}'`;
+        const sql = `SELECT * FROM "Offers" inner join "Users" on "Offers"."creator_id" = "Users"."id" WHERE game_id = '${gameId}'`;
         const result = await pool.query(sql);
         return result.rows;
     }
 
+    static async getByUser(userId) {
+        const sql = `SELECT * FROM "Offers" inner join "Games" on "Offers"."game_id" = "Games"."game_id" WHERE creator_id = '${userId}'`;
+        const result = await pool.query(sql);
+        return result.rows;
+    }
     static async getById(offerId) {
         const sql = `SELECT * FROM "Offers" WHERE order_id = '${offerId}'`;
         const result = await pool.query(sql);

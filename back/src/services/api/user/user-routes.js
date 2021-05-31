@@ -3,7 +3,7 @@ const {
 } = require('./schema/user-schema');
 
 const {
-    getAll, getById, getAccount
+    getAll, getById, getAccount, update
 } = require('./user-controller');
 
 module.exports = async function(fastify) {
@@ -24,9 +24,16 @@ module.exports = async function(fastify) {
     fastify.route({
         method: 'GET',
         url: '/myaccount/:userId',
-        schema: getAccountSchema,
+/*        schema: getAccountSchema,*/
         preValidation: [fastify.tokenValidation],
         handler: getAccount,
     });
+
+    fastify.route({
+        method: 'PUT',
+        url: '/myaccount/:userId',
+        preValidation: [fastify.tokenValidation],
+        handler: update,
+    })
 
 };

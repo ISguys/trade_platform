@@ -7,6 +7,7 @@ const {
     deleteGame,
     updateGame,
     gameSearch,
+    gameByImage
 } = require('./controller');
 
 module.exports = function (fastify, opts, done) {
@@ -18,6 +19,8 @@ module.exports = function (fastify, opts, done) {
         /*{ schema: schemes.getGameById },*/ getGameById
     );
     fastify.post('/game/search', gameSearch);
+
+    fastify.post('/game/byImage', gameByImage);
     // add new game
     fastify.post(
         '/game',

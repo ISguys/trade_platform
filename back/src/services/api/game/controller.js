@@ -27,6 +27,21 @@ exports.getGameById = async function (request, reply) {
     }
 };
 
+exports.gameByImage = async function (request, reply) {
+    try {
+        const { gameImg } = request.body;
+
+        const game = await Game.getByImg(gameImg);
+        if (!game) {
+            return reply.send({ message: 'No game' });
+        }
+        return reply.send(game);
+    } catch (err) {
+        throw new Error(`${err.message}\n${err.name}: \
+        in line ${err.lineNumber}`);
+    }
+};
+
 exports.gameSearch = async function (request, reply) {
     const gameName = request.body.gameName;
     try {

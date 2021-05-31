@@ -4,6 +4,7 @@ const {
     getAll,
     getByGame,
     getOfferById,
+    getByUser,
     addOffer,
     deleteOffer,
 } = require('./controller');
@@ -13,6 +14,7 @@ module.exports = function (fastify, opts, done) {
     fastify.get('/offer', /*{ schema: schemes.getAll },*/ getAll);
 
     fastify.get('/offer/byGame/:gameId', getByGame);
+    fastify.get('/offer/byUser/:userId', getByUser);
     // get offer by id
     fastify.get(
         '/offer/:orderId',
