@@ -1,3 +1,4 @@
+
 const pool = require('../../../db/connection');
 const { v4 } = require('uuid');
 
@@ -30,6 +31,12 @@ imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
         await pool.query(sql, args);
         return 'success';
     }
+  
+    static async getByImg(gameImg) {
+        const sql = `SELECT * FROM "Games" WHERE image_link = '${gameImg}'`;
+        const result = await pool.query(sql);
+        return result.rows;
+    }
 
     static async delete(gameId) {
         const sql = `DELETE FROM "Games" WHERE gameid = '${gameId}'`;
@@ -53,3 +60,5 @@ imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
 }
 
 module.exports = Game;
+
+

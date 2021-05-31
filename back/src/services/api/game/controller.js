@@ -1,6 +1,7 @@
+
 const Game = require('./model');
 
-exports.getAll = async function (request, reply) {
+exports.getAll = async function(request, reply) {
     try {
         const { page } = request.query;
         const games = await Game.getAll(page);
@@ -13,10 +14,10 @@ exports.getAll = async function (request, reply) {
         in line ${err.lineNumber}`);
     }
 };
-exports.getGameById = async function (request, reply) {
+exports.getGameById = async function(request, reply) {
     try {
-        const { gameid } = request.params;
-        const game = await Game.getById(gameid);
+        const { gameId } = request.params;
+        const game = await Game.getById(gameId);
         if (!game) {
             return reply.send({ message: 'No game' });
         }
@@ -27,7 +28,22 @@ exports.getGameById = async function (request, reply) {
     }
 };
 
-exports.gameSearch = async function (request, reply) {
+exports.gameByImage = async function(request, reply) {
+    try {
+        const { gameImg } = request.body;
+
+        const game = await Game.getByImg(gameImg);
+        if (!game) {
+            return reply.send({ message: 'No game' });
+        }
+        return reply.send(game);
+    } catch (err) {
+        throw new Error(`${err.message}\n${err.name}: \
+        in line ${err.lineNumber}`);
+    }
+};
+
+exports.gameSearch = async function(request, reply) {
     const gameName = request.body.gameName;
     try {
         const games = await Game.getAll();
@@ -45,21 +61,21 @@ exports.gameSearch = async function (request, reply) {
     }
 };
 
-exports.addGame = async function (request, reply) {
+exports.addGame = async function(request, reply) {
     const {
-        steamprice,
+        steamPrice,
         title,
-        steamlink,
-        imagelink,
+        steamLink,
+        imageLink,
         description,
     } = request.body;
     try {
         const result = await Game.add(
-            steamprice,
+            steamPrice,
             title,
-            steamlink,
-            imagelink,
-            description,
+            steamLink,
+            imageLink,
+            description
         );
         return reply.send(result);
     } catch (err) {
@@ -68,11 +84,11 @@ exports.addGame = async function (request, reply) {
     }
 };
 
-exports.updateGame = async function (request, reply) {
+exports.updateGame = async function(request, reply) {
     try {
         const { fields } = request.body;
-        const { gameid } = request.params;
-        const result = await Game.update(gameid, fields[0]);
+        const { gameId } = request.params;
+        const result = await Game.update(gameId, fields[0]);
         return reply.send(result);
     } catch (err) {
         throw new Error(`${err.message}\n${err.name}: \
@@ -80,13 +96,15 @@ exports.updateGame = async function (request, reply) {
     }
 };
 
-exports.deleteGame = async function (request, reply) {
+exports.deleteGame = async function(request, reply) {
     try {
-        const { gameid } = request.params;
-        const result = await Game.delete(gameid);
+        const { gameId } = request.params;
+        const result = await Game.delete(gameId);
         return reply.send(result);
     } catch (err) {
         throw new Error(`${err.message}\n${err.name}: \
         in line ${err.lineNumber}`);
     }
 };
+
+

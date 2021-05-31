@@ -1,23 +1,26 @@
+
 // eslint-disable-next-line no-unused-vars
 const schemes = require('./schemes');
 const {
     getAll,
     getByGame,
     getOfferById,
+    getByUser,
     addOffer,
     deleteOffer,
 } = require('./controller');
 
-module.exports = function (fastify, opts, done) {
+
+module.exports = function(fastify, opts, done) {
     // get all rows from table Offers
     fastify.get('/offer', { schema: schemes.getAll }, getAll);
 
-    fastify.get('/offer/byGame/:gameid',
-        { schema: schemes.getByGame }, getByGame);
+    fastify.get('/offer/byGame/:gameId', getByGame);
+    fastify.get('/offer/byUser/:userId', getByUser);
     // get offer by id
     fastify.get(
-        '/offer/:orderid',
-        { schema: schemes.getOfferById },
+        '/offer/:orderId',
+        //{ schema: schemes.getOfferById },
         getOfferById
     );
     // add new offer
