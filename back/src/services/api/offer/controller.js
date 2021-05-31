@@ -14,6 +14,19 @@ exports.getAll = async function (request, reply) {
         in line ${err.lineNumber}`);
     }
 };
+exports.getByUser = async (request, reply) => {
+    const { userId } = request.params;
+    try {
+        const offers = await Offer.getByUser(userId);
+        if (offers.length < 1) {
+            reply.send([]);
+        }
+        return reply.send(offers);
+    } catch (err) {
+        throw new Error(`${err.message}\n${err.name}: \
+        in line ${err.lineNumber}`);
+    }
+};
 
 exports.getByGame = async (request, reply) => {
 

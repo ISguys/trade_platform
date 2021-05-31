@@ -26,7 +26,7 @@ module.exports = function (fastify, opts, done) {
     fastify.post(
         '/game',
         {
-            // schema: schemes.addGame,
+            schema: schemes.addGame,
             preValidation: [fastify.tokenValidation],
         },
         addGame

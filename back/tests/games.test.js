@@ -1,3 +1,5 @@
+
+
 /* eslint-disable no-undef */
 const { v4 } = require('uuid');
 const jwt = require('jsonwebtoken');
@@ -43,7 +45,7 @@ describe('Testing game', () => {
             },
             payload: JSON.stringify(inputData),
         });
-
+        console.log(response.statusCode);
         // check data
         expect(response.statusCode).toBe(200);
         expect(response.body).toBe('success');
@@ -55,8 +57,8 @@ describe('Testing game', () => {
         const inputData = {
             steamprice: 100,
             title: 'test title',
-            steamlink: 'test url',
-            imagelink: 'test image link',
+            steamLink: 'test url',
+            imageLink: 'test image link',
         };
 
         // send request
@@ -87,8 +89,8 @@ describe('Testing game', () => {
                 'test description',
             ];
             const sqlInsert =
-                'INSERT INTO "Games"(gameid, steamprice, title,\
-    steamlink, imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
+                    'INSERT INTO "Games"(gameid, steamprice, title,\
+        steamlink, imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
             await pool.query(sqlInsert, args);
         }
         const expectedData = await Game.getAll(2);
@@ -98,7 +100,7 @@ describe('Testing game', () => {
             url: '/game/page?page=2',
             method: 'GET',
         });
-        // check data
+            // check data
         expect(response.statusCode).toBe(200);
         expect(JSON.parse(response.body)[0].title).toBe(expectedData[0].title);
     });
@@ -141,8 +143,8 @@ describe('Testing game', () => {
             'test description for update',
         ];
         const sqlInsert =
-            'INSERT INTO "Games"(gameid, steamprice, title,\
-    steamlink, imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
+                'INSERT INTO "Games"(gameid, steamprice, title,\
+        steamlink, imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
         await pool.query(sqlInsert, args);
 
         // prepare test data
@@ -178,8 +180,8 @@ describe('Testing game', () => {
             'test description for deleting',
         ];
         const sqlInsert =
-            'INSERT INTO "Games"(gameid, steamprice, title,\
- steamlink, imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
+                'INSERT INTO "Games"(gameid, steamprice, title,\
+     steamlink, imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
         await pool.query(sqlInsert, args);
 
         // send request
