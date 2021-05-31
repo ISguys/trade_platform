@@ -63,18 +63,18 @@ exports.gameSearch = async function(request, reply) {
 
 exports.addGame = async function(request, reply) {
     const {
-        steamPrice,
+        steamprice,
         title,
-        steamLink,
-        imageLink,
+        steamlink,
+        imagelink,
         description,
     } = request.body;
     try {
         const result = await Game.add(
-            steamPrice,
+            steamprice,
             title,
-            steamLink,
-            imageLink,
+            steamlink,
+            imagelink,
             description
         );
         return reply.send(result);
