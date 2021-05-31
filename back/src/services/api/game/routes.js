@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // eslint-disable-next-line no-unused-vars
 const schemes = require('./schemes');
 const {
@@ -51,7 +51,7 @@ module.exports = function (fastify, opts, done) {
     );
     done();
 };
-=======
+
 // eslint-disable-next-line no-unused-vars
 const schemes = require('./schemes');
 const {
@@ -101,4 +101,3 @@ module.exports = function (fastify, opts, done) {
     );
     done();
 };
->>>>>>> 0c395a6d77a68d0974dc0db5500a0b9d8b9e112f
