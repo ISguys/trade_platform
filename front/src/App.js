@@ -8,6 +8,9 @@ import GameList from "./components/GameList";
 import PGSwitch from "./components/PGSwitch";
 import Footer from "./components/Footer";
 import Game1 from "./components/Game1";
+import Warranty from "./components/Warranty";
+import userprofile from "./components/userprofile";
+import makeOffer from "./components/makeOffer";
 let logoutTimer;
 
 function App() {
@@ -63,13 +66,16 @@ function App() {
     }>
         <BrowserRouter>
             <Route render={() => (<Header />)} ></Route>
+            <Route exact path="/Warranty" component={Warranty} />
+            <Route exact path="/userprofile" component={userprofile} />
+            <Route exact path="/userprofile/:gameId" component={makeOffer} />
             <Route exact path="/">
                 <Sidebar />
                 <GameList />
                 <PGSwitch />
                 <Footer />
             </Route>
-            <Route path="/games/:gameId">
+            <Route exact path="/games/:gameId">
                 <Game1 />
             </Route>
         </BrowserRouter>

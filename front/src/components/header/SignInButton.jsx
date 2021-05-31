@@ -20,7 +20,7 @@ const SignInButton = () => {
 
 
 
-       useEffect(() => {
+    useEffect(() => {
 
         window.addEventListener('message', (event) => {
 

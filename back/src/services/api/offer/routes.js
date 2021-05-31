@@ -1,22 +1,32 @@
+
+// eslint-disable-next-line no-unused-vars
 const schemes = require('./schemes');
-const { getAll, getByGame, getOfferById, addOffer, deleteOffer } = require('./controller');
+const {
+    getAll,
+    getByGame,
+    getOfferById,
+    getByUser,
+    addOffer,
+    deleteOffer,
+} = require('./controller');
 
 module.exports = function(fastify, opts, done) {
     // get all rows from table Offers
     fastify.get('/offer', /*{ schema: schemes.getAll },*/ getAll);
 
     fastify.get('/offer/byGame/:gameId', getByGame);
+    fastify.get('/offer/byUser/:userId', getByUser);
     // get offer by id
     fastify.get(
         '/offer/:orderId',
-       /* { schema: schemes.getOfferById },*/
+        //{ schema: schemes.getOfferById },
         getOfferById
     );
     // add new offer
     fastify.post(
         '/offer/create',
         {
-            /*schema: schemes.addOffer,*/
+            //schema: schemes.addOffer,
             preValidation: [fastify.tokenValidation],
         },
         addOffer
@@ -25,7 +35,7 @@ module.exports = function(fastify, opts, done) {
     fastify.delete(
         '/offer/:orderId',
         {
-            schema: schemes.deleteOffer,
+            //schema: schemes.deleteOffer,
             preValidation: [fastify.tokenValidation],
         },
         deleteOffer

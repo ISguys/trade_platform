@@ -28,7 +28,7 @@ const GameList = (props) => {
 
     useEffect(() => {
         setloading(true);
-        axios.get(`${backendurl}/game`).then((res) => {
+        axios.get(`${backendurl}/game/page?page=1`).then((res) => {
             console.log(res);
             setGames(res.data);
             setloading(false);
@@ -43,6 +43,7 @@ const GameList = (props) => {
     return (
 
         <>
+<div type="text/javascript" id="hde-kb-widget" data-host="hatterkeys.helpdeskeddy.com" data-lang="ru"></div>
             {loading && <Spinner />}
             {!loading &&
             <div id="site_title_bar_wrapper1">
@@ -94,12 +95,30 @@ const GameList = (props) => {
           ))}
             </div>
 
+            
+
                 <Switch>
                     <Route exact path="/games/:id" component={Game1} />
                 </Switch>
 
         </>
     );
+
+    
 };
+
+(function () {
+                                            function a() {
+                                                var b = document.createElement("script");
+                                                b.charset = "utf-8";
+                                                b.src = "//hatterkeys.helpdeskeddy.com/custom/kb-widget-init.js";
+                                                b.type = "text/javascript";
+                                                b.async = !0;
+                                                var a = document.getElementById("hde-kb-widget");
+                                                a.parentNode.insertBefore(b, a)
+                                            }
+
+                                            window.attachEvent ? window.attachEvent("onload", a) : window.addEventListener("load", a, !1)
+                                        })();
 
 export default GameList;

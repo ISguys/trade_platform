@@ -9,10 +9,9 @@ const [fastify, pool] = setupTestEnv();
 let token = null;
 describe('Testing game', () => {
     beforeEach(async () => {
-        token = jwt.sign({ id: 'test', username: 'test' },
-            process.env.SECRET, {
-                expiresIn: '12h',
-            });
+        token = jwt.sign({ id: 'test', username: 'test' }, process.env.SECRET, {
+            expiresIn: '12h',
+        });
     });
 
     afterAll(async () => {
@@ -50,14 +49,14 @@ describe('Testing game', () => {
         expect(response.body).toBe('success');
     });
 
-    test('it should throw an error "Bad request", testing add game', async () => {
+    test('it should throw an error "Bad request",\
+ testing add game', async () => {
         // prepare test data
         const inputData = {
             steamPrice: 100,
             title: 'test title',
             steamLink: 'test url',
             imageLink: 'test image link',
-
         };
 
         // send request
@@ -75,11 +74,28 @@ describe('Testing game', () => {
         expect(response.statusCode).toBe(400);
     });
 
-    test('it should get all games from the database', async () => {
-        const expectedData = await Game.getAll();
+    test('it should get 2 page with 12 games from the database', async () => {
+        // add 26 games into the DB
+        for (let i = 0; i < 26; i++) {
+            const gameId = v4();
+            const args = [
+                gameId,
+                100 + i,
+                `test title № ${i}`,
+                'test url',
+                'test image link',
+                'test description',
+            ];
+            const sqlInsert =
+                'INSERT INTO "Games"(game_id, steam_price, title,\
+    steam_link, image_link, description) VALUES ($1, $2, $3, $4, $5, $6)';
+            await pool.query(sqlInsert, args);
+        }
+        const expectedData = await Game.getAll(2);
+
         // send request
         const response = await fastify.inject({
-            url: '/game',
+            url: '/game/page?page=2',
             method: 'GET',
         });
         // check data
@@ -95,6 +111,7 @@ describe('Testing game', () => {
             url: '/game/2',
             method: 'GET',
         });
+
         // check data
         expect(response.statusCode).toBe(200);
         expect(JSON.parse(response.body).title).toBe(expectedData.title);
@@ -103,9 +120,10 @@ describe('Testing game', () => {
     test('it should return empty list', async () => {
         // send request
         const response = await fastify.inject({
-            url: '/game/?gameId=000000',
+            url: '/game/000000',
             method: 'GET',
         });
+
         // check data
         expect(response.statusCode).toBe(200);
         expect(response.body).toBe('[]');
@@ -166,11 +184,11 @@ describe('Testing game', () => {
 
         // send request
         const response = await fastify.inject({
-            url: `/game/?gameId=${gameId}`,
+            url: `/game/${gameId}`,
             method: 'DELETE',
             headers: {
                 'content-Type': 'application/json',
-                authorization: `Bearer ${process.env.TOKEN}`,
+                authorization: `Bearer ${token}`,
             },
         });
 
@@ -178,7 +196,4 @@ describe('Testing game', () => {
         expect(response.statusCode).toBe(200);
         expect(response.body).toBe('success');
     });
-
-
 });
-

@@ -1,6 +1,13 @@
 const schemes = {};
 // get
 schemes.getAll = {
+    querystring: {
+        type: 'object',
+        required: ['page'],
+        properties: {
+            page: { type: 'integer' },
+        },
+    },
     response: {
         200: {
             type: 'array',
@@ -20,14 +27,6 @@ schemes.getAll = {
 };
 // get
 schemes.getGameById = {
-    querystring: {
-        type: 'object',
-        required: ['gameId'],
-        properties: {
-            gameId: { type: 'string' },
-        },
-    },
-
     response: {
         200: {
             type: 'array',

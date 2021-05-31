@@ -1,3 +1,4 @@
+
 const Offer = require('./model');
 
 exports.getAll = async function(request, reply) {
@@ -27,10 +28,23 @@ exports.getByGame = async (request, reply) => {
     }
 };
 
+exports.getByUser = async (request, reply) => {
+    const { userId } = request.params;
+    try {
+        const offers = await Offer.getByUser(userId);
+        if (offers.length < 1) {
+            reply.send([]);
+        }
+        return reply.send(offers);
+    } catch (err) {
+        throw new Error(`${err.message}\n${err.name}: \
+        in line ${err.lineNumber}`);
+    }
+};
 exports.getOfferById = async function(request, reply) {
     try {
-        const { offerId } = request.params;
-        const offer = await Offer.getById(offerId);
+        const { orderId } = request.params;
+        const offer = await Offer.getById(orderId);
         if (!offer) {
             return reply.send({ message: 'No offer' });
         }
@@ -54,8 +68,8 @@ exports.addOffer = async function(request, reply) {
 
 exports.deleteOffer = async function(request, reply) {
     try {
-        const { offerId } = request.params;
-        const result = await Offer.delete(offerId);
+        const { orderId } = request.params;
+        const result = await Offer.delete(orderId);
         return reply.send(result);
     } catch (err) {
         throw new Error(`${err.message}\n${err.name}: \

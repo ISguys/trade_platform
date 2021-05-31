@@ -8,9 +8,9 @@ schemes.getAll = {
                 type: 'object',
                 properties: {
                     id: { type: 'string' },
-                    sellerId: { type: 'integer' },
-                    buyerId: { type: 'integer' },
-                    orderId: { type: 'integer' },
+                    sellerId: { type: 'string' },
+                    buyerId: { type: 'string' },
+                    orderId: { type: 'string' },
                     date: { type: 'string' },
                     type: { type: 'string' },
                 },
@@ -20,14 +20,6 @@ schemes.getAll = {
 };
 // get
 schemes.getOrderById = {
-    querystring: {
-        type: 'object',
-        required: ['id'],
-        properties: {
-            id: { type: 'string' },
-        },
-    },
-
     response: {
         200: {
             type: 'array',
@@ -35,9 +27,9 @@ schemes.getOrderById = {
                 type: 'object',
                 properties: {
                     id: { type: 'string' },
-                    sellerId: { type: 'integer' },
-                    buyerId: { type: 'integer' },
-                    orderId: { type: 'integer' },
+                    sellerId: { type: 'string' },
+                    buyerId: { type: 'string' },
+                    orderId: { type: 'string' },
                     date: { type: 'string' },
                     type: { type: 'string' },
                 },
@@ -51,9 +43,9 @@ schemes.addOrder = {
         type: 'object',
         required: ['sellerId', 'buyerId', 'orderId', 'type'],
         properties: {
-            sellerId: { type: 'integer' },
-            buyerId: { type: 'integer' },
-            orderId: { type: 'integer' },
+            sellerId: { type: 'string' },
+            buyerId: { type: 'string' },
+            orderId: { type: 'string' },
             type: { type: 'string' },
         },
     },
