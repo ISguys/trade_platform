@@ -11,7 +11,7 @@ const {
     gameByImage
 } = require('./controller');
 
-module.exports = function (fastify, opts, done) {
+module.exports = function(fastify, opts, done) {
     // get page of games from table Game
     fastify.get('/game/page', /*{ schema: schemes.getAll },*/ getAll);
     // get game by id
@@ -26,7 +26,7 @@ module.exports = function (fastify, opts, done) {
     fastify.post(
         '/game',
         {
-            schema: schemes.addGame,
+            // schema: schemes.addGame,
             preValidation: [fastify.tokenValidation],
         },
         addGame
