@@ -10,7 +10,6 @@ import Footer from "./components/Footer";
 import Game1 from "./components/Game1";
 import Warranty from "./components/Warranty";
 import userprofile from "./components/userprofile";
-import makeOffer from "./components/makeOffer";
 let logoutTimer;
 
 function App() {
@@ -68,7 +67,6 @@ function App() {
             <Route render={() => (<Header />)} ></Route>
             <Route exact path="/Warranty" component={Warranty} />
             <Route exact path="/userprofile" component={userprofile} />
-            <Route exact path="/userprofile/:gameId" component={makeOffer} />
             <Route exact path="/">
                 <Sidebar />
                 <GameList />
