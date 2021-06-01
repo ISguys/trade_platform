@@ -1,3 +1,5 @@
+
+// eslint-disable-next-line no-unused-vars
 const schemes = require('./schemes');
 const {
     getAll,
@@ -6,14 +8,20 @@ const {
     deleteGame,
     updateGame,
     gameSearch,
+    gameByImage
 } = require('./controller');
 
 module.exports = function (fastify, opts, done) {
-    // get all rows from table Game
-    fastify.get('/game', /*{ schema: schemes.getAll },*/ getAll);
+    // get page of games from table Game
+    fastify.get('/game/page', /*{ schema: schemes.getAll },*/ getAll);
     // get game by id
-    fastify.get('/game/:gameId', /*{ schema: schemes.getGameById },*/ getGameById);
+    fastify.get(
+        '/game/:gameId',
+        /*{ schema: schemes.getGameById },*/ getGameById
+    );
     fastify.post('/game/search', gameSearch);
+
+    fastify.post('/game/byImage', gameByImage);
     // add new game
     fastify.post(
         '/game',
@@ -27,7 +35,7 @@ module.exports = function (fastify, opts, done) {
     fastify.put(
         '/game/:gameId',
         {
-            schema: schemes.updateGame,
+            // schema: schemes.updateGame,
             preValidation: [fastify.tokenValidation],
         },
         updateGame
@@ -36,7 +44,7 @@ module.exports = function (fastify, opts, done) {
     fastify.delete(
         '/game/:gameId',
         {
-            schema: schemes.deleteGame,
+            // schema: schemes.deleteGame,
             preValidation: [fastify.tokenValidation],
         },
         deleteGame

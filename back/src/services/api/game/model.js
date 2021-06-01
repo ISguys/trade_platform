@@ -2,36 +2,38 @@ const pool = require('../../../db/connection');
 const { v4 } = require('uuid');
 
 class Game {
-    static async getAll() {
-        const sql = 'SELECT * FROM "Games"';
+    static async getAll(page = 1) {
+        const sql = `SELECT * FROM "Games" ORDER BY gameid ASC\
+ OFFSET ${12 * (page - 1)} LIMIT 12`;
         const rows = await pool.query(sql);
         return rows.rows;
     }
 
     static async getById(gameId) {
-        const sql = `SELECT * FROM "Games" WHERE game_id = '${gameId}'`;
+        const sql = `SELECT * FROM "Games" WHERE gameid = '${gameId}'`;
         const result = await pool.query(sql);
         return result.rows;
     }
 
-    static async add(steamPrice, title, steamLink, imageLink, description) {
+    static async add(steamprice, title, steamlink, imagelink, description) {
         const args = [
             v4(),
-            steamPrice,
+            steamprice,
             title,
-            steamLink,
-            imageLink,
+            steamlink,
+            imagelink,
             description,
         ];
+        console.log(args);
         const sql =
-            'INSERT INTO "Games"(game_id, steam_price, title, steam_link, \
-image_link, description) VALUES ($1, $2, $3, $4, $5, $6)';
+            'INSERT INTO "Games"(gameid, steamprice, title, steamlink, \
+imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
         await pool.query(sql, args);
         return 'success';
     }
 
     static async delete(gameId) {
-        const sql = `DELETE FROM "Games" WHERE game_id = '${gameId}'`;
+        const sql = `DELETE FROM "Games" WHERE gameid = '${gameId}'`;
         await pool.query(sql);
         return 'success';
     }
@@ -44,7 +46,7 @@ image_link, description) VALUES ($1, $2, $3, $4, $5, $6)';
 '${fields[key]}'`
         );
         sql += formClause.join(', ');
-        sql += ` WHERE game_id = '${gameId}'`;
+        sql += ` WHERE gameid = '${gameId}'`;
         // execute script
         await pool.query(sql);
         return 'success';

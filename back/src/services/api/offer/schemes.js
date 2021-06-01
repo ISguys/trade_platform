@@ -8,14 +8,14 @@ schemes.getAll = {
                 type: 'object',
                 properties: {
                     orderId: { type: 'string' },
-                    creatorId: { type: 'integer' },
-                    orderDate: { type: ['string', null] },
-                    gameId: { type: 'integer' },
+                    creatorId: { type: 'string' },
+                    gameId: { type: 'string' },
                     steamBotLink: { type: 'string' },
-                    buyerId: { type: ['integer', null] },
                     price: { type: 'number' },
-                    createdAt: { type: 'string' },
+                    createdAt: { type: 'object' },
                     status: { type: 'boolean' },
+                    buyerId: { type: ['null', 'string'] },
+                    orderDate: { type: ['null', 'string'] },
                 },
             },
         },
@@ -23,14 +23,6 @@ schemes.getAll = {
 };
 // get
 schemes.getOfferById = {
-    querystring: {
-        type: 'object',
-        required: ['orderId'],
-        properties: {
-            orderId: { type: 'string' },
-        },
-    },
-
     response: {
         200: {
             type: 'array',
@@ -38,14 +30,14 @@ schemes.getOfferById = {
                 type: 'object',
                 properties: {
                     orderId: { type: 'string' },
-                    creatorId: { type: 'integer' },
-                    orderDate: { type: ['string', null] },
-                    gameId: { type: 'integer' },
+                    creatorId: { type: 'string' },
+                    gameId: { type: 'string' },
                     steamBotLink: { type: 'string' },
-                    buyerId: { type: ['integer', null] },
                     price: { type: 'number' },
-                    createdAt: { type: 'string' },
+                    createdAt: { type: 'object' },
                     status: { type: 'boolean' },
+                    buyerId: { type: ['null', 'string'] },
+                    orderDate: { type: ['null', 'string'] },
                 },
             },
         },
@@ -57,8 +49,8 @@ schemes.addOffer = {
         type: 'object',
         required: ['creatorId', 'gameId', 'steamBotLink', 'price'],
         properties: {
-            creatorId: { type: 'integer' },
-            gameId: { type: 'integer' },
+            creatorId: { type: 'string' },
+            gameId: { type: 'string' },
             steamBotLink: { type: 'string' },
             price: { type: 'number' },
         },

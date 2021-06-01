@@ -18,7 +18,7 @@ exports.getAll = async function (request, reply) {
 
 exports.getOrderById = async function (request, reply) {
     try {
-        const { id } = request.query;
+        const { id } = request.params;
         const order = await Order.getById(id);
         if (!order) {
             return reply.send({ message: 'No order' });
@@ -35,7 +35,7 @@ exports.addOrder = async function (request, reply) {
     try {
         const { sellerId, buyerId, offerId, type } = request.body;
         const result = await Order.add(sellerId, buyerId, offerId, type);
-        Offer.close(offerId, buyerId);
+        if (Offer.getById(offerId)) Offer.close(offerId, buyerId);
         return reply.send(result);
     } catch (err) {
         fastify.log.error(err);
@@ -46,7 +46,7 @@ exports.addOrder = async function (request, reply) {
 
 exports.deleteOrder = async function (request, reply) {
     try {
-        const { Id } = request.query;
+        const { Id } = request.params;
         const result = await Order.delete(Id);
         return reply.send(result);
     } catch (err) {

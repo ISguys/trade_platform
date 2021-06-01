@@ -28,7 +28,7 @@ const GameList = (props) => {
 
     useEffect(() => {
         setloading(true);
-        axios.get(`${backendurl}/game`).then((res) => {
+        axios.get(`${backendurl}/game/page?page=1`).then((res) => {
             console.log(res);
             setGames(res.data);
             setloading(false);

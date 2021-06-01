@@ -7,11 +7,6 @@ import backendurl from '../config';
 import Spinner from '../shared/LoadingSpinner.js';
 
 
-const UserOffers = () => {
-   
-    
-}
-
 const Game1 = () => {
     const { gameId } = useParams();
     console.log({ gameId });

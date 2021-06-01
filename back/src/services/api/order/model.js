@@ -15,11 +15,10 @@ class Order {
     }
 
     static async add(sellerId, buyerId, orderId, type) {
-        const date = new Date().toISOString().split('T')[0];
-        const args = [v4(), sellerId, buyerId, orderId, date, type];
+        const args = [v4(), sellerId, buyerId, orderId, type];
         const sql =
             'INSERT INTO "Orders"(id, seller_id, buyer_id, order_id,\
- date, type) VALUES ($1, $2, $3, $4, $5, $6)';
+ type) VALUES ($1, $2, $3, $4, $5)';
         await pool.query(sql, args);
         return 'success';
     }

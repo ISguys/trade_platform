@@ -20,9 +20,16 @@ module.exports = class User {
     }
 
     static async findById(userId) {
-        const sql = `SELECT * FROM "Users" WHERE "steam_id"='${userId}'`;
+        const sql = `SELECT * FROM "Users" WHERE "id"='${userId}'`;
         const result = await pool.query(sql);
         return result.rows;
+    }
+
+    static async findBySteamId(userId) {
+        console.log(userId);
+        const sql = `SELECT * FROM "Users" WHERE "steam_id"='${userId}'`;
+        const result = await pool.query(sql);
+        return result.rows[0];
     }
 
     async save() {
@@ -41,13 +48,11 @@ module.exports = class User {
 
     static async updateUser(userId, fields) {
         // create sql script
-        let sql = 'UPDATE "Users" SET ';
-        const formClause = Object.keys(fields).map(
-            (key) => `${key} = ${fields[key]}`
-        );
-        sql += formClause.join(', ');
-        sql += ` WHERE id = ${userId}`;
+        console.log(fields)
+        console.log(userId);
+        let sql = `UPDATE "Users" SET "trade_link" = '${fields}' WHERE id = '${userId}'`;
         // execute script
+        console.log(sql)
         return pool.query(sql);
     }
 };

@@ -1,17 +1,24 @@
 const schemes = {};
 // get
 schemes.getAll = {
+    querystring: {
+        type: 'object',
+        required: ['page'],
+        properties: {
+            page: { type: 'integer' },
+        },
+    },
     response: {
         200: {
             type: 'array',
             items: {
                 type: 'object',
                 properties: {
-                    gameId: { type: 'string' },
+                    gameid: { type: 'string' },
                     title: { type: 'string' },
-                    streamPrice: { type: 'number' },
-                    steamLink: { type: 'string' },
-                    imageLink: { type: 'string' },
+                    streamprice: { type: 'number' },
+                    steamlink: { type: 'string' },
+                    imagelink: { type: 'string' },
                     description: { type: 'string' },
                 },
             },
@@ -20,25 +27,17 @@ schemes.getAll = {
 };
 // get
 schemes.getGameById = {
-    querystring: {
-        type: 'object',
-        required: ['gameId'],
-        properties: {
-            gameId: { type: 'string' },
-        },
-    },
-
     response: {
         200: {
             type: 'array',
             items: {
                 type: 'object',
                 properties: {
-                    gameId: { type: 'string' },
+                    gameid: { type: 'string' },
                     title: { type: 'string' },
-                    streamPrice: { type: 'number' },
-                    steamLink: { type: 'string' },
-                    imageLink: { type: 'string' },
+                    streamprice: { type: 'number' },
+                    steamlink: { type: 'string' },
+                    imagelink: { type: 'string' },
                     description: { type: 'string' },
                 },
             },
@@ -50,17 +49,17 @@ schemes.addGame = {
     body: {
         type: 'object',
         required: [
-            'steamPrice',
+            'steamprice',
             'title',
-            'steamLink',
-            'imageLink',
+            'steamlink',
+            'imagelink',
             'description',
         ],
         properties: {
-            steamPrice: { type: 'number' },
+            streamprice: { type: 'number' },
             title: { type: 'string' },
-            steamLink: { type: 'string' },
-            imageLink: { type: 'string' },
+            steamlink: { type: 'string' },
+            imagelink: { type: 'string' },
             description: { type: 'string' },
         },
     },
