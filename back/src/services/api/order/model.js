@@ -9,7 +9,7 @@ class Order {
     }
 
     static async getById(orderId) {
-        const sql = `SELECT * FROM "Orders" WHERE order_id = '${orderId}'`;
+        const sql = `SELECT * FROM "Orders" WHERE id = '${orderId}'`;
         const result = await pool.query(sql);
         return result.rows;
     }
@@ -17,7 +17,7 @@ class Order {
     static async add(sellerId, buyerId, orderId, type) {
         const args = [v4(), sellerId, buyerId, orderId, type];
         const sql =
-            'INSERT INTO "Orders"(id, seller_id, buyer_id, order_id,\
+            'INSERT INTO "Orders"(id, sellerid, buyerid, orderid,\
  type) VALUES ($1, $2, $3, $4, $5)';
         await pool.query(sql, args);
         return 'success';

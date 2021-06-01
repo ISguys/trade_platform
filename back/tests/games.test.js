@@ -26,10 +26,10 @@ describe('Testing game', () => {
     test('it should add a new game to the database', async () => {
         // prepare test data
         const inputData = {
-            steamPrice: 100,
+            steamprice: 100,
             title: 'test title',
-            steamLink: 'test url',
-            imageLink: 'test image link',
+            steamlink: 'test url',
+            imagelink: 'test image link',
             description: 'test description',
         };
 
@@ -43,7 +43,6 @@ describe('Testing game', () => {
             },
             payload: JSON.stringify(inputData),
         });
-
         // check data
         expect(response.statusCode).toBe(200);
         expect(response.body).toBe('success');
@@ -53,10 +52,10 @@ describe('Testing game', () => {
  testing add game', async () => {
         // prepare test data
         const inputData = {
-            steamPrice: 100,
+            steamprice: 100,
             title: 'test title',
-            steamLink: 'test url',
-            imageLink: 'test image link',
+            steamlink: 'test url',
+            imagelink: 'test image link',
         };
 
         // send request
@@ -69,7 +68,6 @@ describe('Testing game', () => {
             },
             payload: JSON.stringify(inputData),
         });
-
         // check data
         expect(response.statusCode).toBe(400);
     });
@@ -87,8 +85,8 @@ describe('Testing game', () => {
                 'test description',
             ];
             const sqlInsert =
-                'INSERT INTO "Games"(game_id, steam_price, title,\
-    steam_link, image_link, description) VALUES ($1, $2, $3, $4, $5, $6)';
+                'INSERT INTO "Games"(gameid, steamprice, title,\
+        steamlink, imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
             await pool.query(sqlInsert, args);
         }
         const expectedData = await Game.getAll(2);
@@ -141,8 +139,8 @@ describe('Testing game', () => {
             'test description for update',
         ];
         const sqlInsert =
-            'INSERT INTO "Games"(game_id, steam_price, title,\
- steam_link, image_link, description) VALUES ($1, $2, $3, $4, $5, $6)';
+            'INSERT INTO "Games"(gameid, steamprice, title,\
+        steamlink, imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
         await pool.query(sqlInsert, args);
 
         // prepare test data
@@ -178,8 +176,8 @@ describe('Testing game', () => {
             'test description for deleting',
         ];
         const sqlInsert =
-            'INSERT INTO "Games"(game_id, steam_price, title,\
- steam_link, image_link, description) VALUES ($1, $2, $3, $4, $5, $6)';
+            'INSERT INTO "Games"(gameid, steamprice, title,\
+     steamlink, imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
         await pool.query(sqlInsert, args);
 
         // send request

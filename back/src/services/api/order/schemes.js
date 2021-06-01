@@ -8,9 +8,9 @@ schemes.getAll = {
                 type: 'object',
                 properties: {
                     id: { type: 'string' },
-                    sellerId: { type: 'string' },
-                    buyerId: { type: 'string' },
-                    orderId: { type: 'string' },
+                    sellerid: { type: 'string' },
+                    buyerid: { type: 'string' },
+                    orderid: { type: 'string' },
                     date: { type: 'string' },
                     type: { type: 'string' },
                 },
@@ -27,9 +27,9 @@ schemes.getOrderById = {
                 type: 'object',
                 properties: {
                     id: { type: 'string' },
-                    sellerId: { type: 'string' },
-                    buyerId: { type: 'string' },
-                    orderId: { type: 'string' },
+                    sellerid: { type: 'string' },
+                    buyerid: { type: 'string' },
+                    orderid: { type: 'string' },
                     date: { type: 'string' },
                     type: { type: 'string' },
                 },
@@ -41,11 +41,11 @@ schemes.getOrderById = {
 schemes.addOrder = {
     body: {
         type: 'object',
-        required: ['sellerId', 'buyerId', 'orderId', 'type'],
+        required: ['sellerid', 'buyerid', 'orderid', 'type'],
         properties: {
-            sellerId: { type: 'string' },
-            buyerId: { type: 'string' },
-            orderId: { type: 'string' },
+            sellerid: { type: 'string' },
+            buyerid: { type: 'string' },
+            orderid: { type: 'string' },
             type: { type: 'string' },
         },
     },
