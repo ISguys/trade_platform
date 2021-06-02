@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 import SignInButton from './SignInButton';
 import { AuthContext } from '../../context/auth-context';
 import sitelogo from '../../assets/logo.png';
+import Modal from '../../components/Modal';
+import Chat from '../Chat';
 
 const Header = () => {
+    const [modalActive, setModalActive] = useState(true)
     const { isLoggedIn, logout } = useContext(AuthContext);
    return (
     <>
@@ -24,9 +27,8 @@ const Header = () => {
                                 <div id="warranty1">Гарантии</div>
                             </div>
                         </Link>
-                        <Link to="/Warranty">
-                            <div id="review"><div id="review1">Отзывы</div></div>
-                        </Link>
+                            <div id="review" onClick ={() => setModalActive(true)} ><div id="review1">Отзывы</div></div>
+
 
 
 
@@ -55,6 +57,10 @@ const Header = () => {
 
 
 
+            <Modal active={modalActive} setActive={setModalActive}> 
+<div id="form"> 
+<Chat></Chat></div>
+  </Modal>
     </>
 )};
 
