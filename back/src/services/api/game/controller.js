@@ -26,6 +26,21 @@ exports.getGameById = async function (request, reply) {
         in line ${err.lineNumber}`);
     }
 };
+exports.gameByImage = async function (request, reply) {
+    try {
+        const { gameImg } = request.body;
+
+        const game = await Game.getByImg(gameImg);
+        if (!game) {
+            return reply.send({ message: 'No game' });
+        }
+        return reply.send(game);
+    } catch (err) {
+        throw new Error(`${err.message}\n${err.name}: \
+        in line ${err.lineNumber}`);
+    }
+};
+
 
 exports.gameByImage = async function (request, reply) {
     try {

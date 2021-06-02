@@ -80,11 +80,11 @@ const GameList = (props) => {
             <div id="cards">
                 {games &&
           games.map((game) => (
-              <Link to={'/games/'+game.game_id}>
+              <Link to={'/games/'+game.gameid}>
                   <div id="card1">
                       <div id="card1img">
                           <img
-                          src={game.image_link}
+                          src={game.imagelink}
                           alt={game.title}
                       />
                       </div>

@@ -13,7 +13,7 @@ module.exports = function (fastify, opts, done) {
     // get page of games from table Game
     fastify.get('/game/page', { schema: schemes.getAll }, getAll);
     // get game by id
-    fastify.get('/game/:gameId', { schema: schemes.getGameById }, getGameById);
+    fastify.get('/game/:gameId', getGameById);
     fastify.post('/game/search', gameSearch);
 
     fastify.post('/game/byImage', gameByImage);

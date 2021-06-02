@@ -52,10 +52,10 @@ const Game1 = () => {
                 {console.log({offers})}
                 <div id="frame2">
                     <div id="gamecard">
-                        <img src={game?.image_link}
+                        <img src={game?.imagelink}
                           alt={game?.title} />
                           </div>
-                    <div id="gameprice">{game?.steam_price} <h>$</h></div>
+                    <div id="gameprice">{game?.steamprice} <h>$</h></div>
                     <div id="buybutton"></div>
                 </div>
 
@@ -68,11 +68,11 @@ const Game1 = () => {
                   <div id="offercard">
                       <div id="alluseroffers1">
                           <img
-                          src={game?.image_link}
+                          src={game?.imagelink}
                           alt={game?.title}
                       />
                       </div>
-                     Никнейм: {offer?.creator_id}<p/>
+                     Никнейм: {offer?.steam_name}<p/>
                      Цена:  {offer?.price} $
                   </div>
 

@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import backendurl from '../config';
 import Spinner from '../shared/LoadingSpinner.js';
 import GameList from './GameList';
-
+import Modal from '../components/Modal';
+import sitelogo from '../assets/logo.png';
 const UserProfile = () => {
     const { logout } = useContext(AuthContext);
     const storage = localStorage.getItem('userData');
@@ -16,8 +17,13 @@ const UserProfile = () => {
     const [offers, setOffers] = useState(null);
     const [loading, setloading] = useState(false);
     const [tradeLink, setTradeLink] = useState("");
+    const [modalActive, setModalActive] = useState(false);
 
     const Logout = () => {};
+
+    const createOffer = (game) => {
+
+    }
 
     const deleteOffer = (offerId) => {
 
@@ -94,6 +100,8 @@ const UserProfile = () => {
     }, []);
     return (<>
         {loading && <Spinner/>}
+
+
         {!loading &&
         <>
             <div type="text/javascript" id="hde-kb-widget" data-host="hatterkeys.helpdeskeddy.com" data-lang="ru"></div>
@@ -127,9 +135,8 @@ const UserProfile = () => {
                                     alt={ "zxc"}
                                 />
                             </div>
-
                             <div style={{marginTop: '10px'}}>
-                                <button onClick={() => makeOffer()} className='myButton'>Создать предложение</button>
+                                <button onClick={() => setModalActive(true)} className='myButton'>Создать предложение</button>
                             </div>
                         </div>
                     ))}
@@ -143,19 +150,27 @@ const UserProfile = () => {
 
                         <div id="card1img">
                             <img
-                                src={ offer?.image_link}
+                                src={ offer?.imagelink}
                                 alt={ offer?.title}
                             />
                         </div>
                         <div style={{marginTop: '10px'}}>{offer?.title}</div>
                         <div style={{marginTop: '10px'}}>
-                            <button onClick={() => {deleteOffer(offer.order_id)}} className='myButton'>Удалить предложение</button>
+                            <button onClick={() => {deleteOffer(offer.orderid)}} className='myButton'>Удалить предложение</button>
                         </div>
 
                     </div>
                     ))}
                 </div>
             </div>
+            <Modal active={modalActive} setActive={setModalActive}>
+                <div id="modalcontent">
+                    <div> <img src={sitelogo} alt="logo" className="gamepageimg"/></div>
+                    <div id ="sellprice" >Введите цену продажи:</div>
+                    <div><input type="number" name="name" id="searchblank1"/></div>
+                    <input type="Submit" onClick={()=>{}} value="Продать" id="sellbutton" />
+                </div>
+            </Modal>
             <Footer/>
         </>
         }

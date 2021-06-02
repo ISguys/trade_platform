@@ -16,7 +16,7 @@ schemes.getAll = {
                 properties: {
                     gameid: { type: 'string' },
                     title: { type: 'string' },
-                    streamprice: { type: 'number' },
+                    streamprice: { type: 'string' },
                     steamlink: { type: 'string' },
                     imagelink: { type: 'string' },
                     description: { type: 'string' },
@@ -35,7 +35,7 @@ schemes.getGameById = {
                 properties: {
                     gameid: { type: 'string' },
                     title: { type: 'string' },
-                    streamprice: { type: 'number' },
+                    streamprice: { type: 'string' },
                     steamlink: { type: 'string' },
                     imagelink: { type: 'string' },
                     description: { type: 'string' },
