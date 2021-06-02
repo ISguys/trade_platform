@@ -246,6 +246,7 @@ h3 {
   left: 580px;
   top: 40px;
   margin: 10px;
+  text-align: left;
   background: url(images/navbar/nearlogo.png) no-repeat;
   background-size: 100px 50px;
 }
@@ -255,6 +256,7 @@ h3 {
   margin-top: 13px;
   margin-left: 7px;
   color: white;
+  text-align: left;
 }
 
 #help {
@@ -602,7 +604,56 @@ z-index: 10000;
   margin-top: 350px;
   font-size: 150%;
 }
+#microchel1 {
+  padding: 20px;
+  position:absolute;
+  width: 30%;
+  height: 30%;
+  margin-left: 75%;
+  margin-top: 100px;
+  font-size: 150%;
+  float: right;
+  background: url(images/karusel/karuselgif.gif) no-repeat;
+  background-size: 300px 300px;
+  background-position:right;
+}
+#microchel2 {
+  padding: 20px;
+  position:absolute;
+  width: 40%;
+  height: 30%;
+  margin-top: 52%;
+  font-size: 150%;
+  float: right;
+  background: url(images/Gamepage/microchelgif.gif) no-repeat;
+  background-size: 300px 300px;
+  background-position:right;
+}
+#kasa{
+  padding: 20px;
+  position:absolute;
+  width: 55%;
+  height: 50%;
+  margin-top: 52%;
+  font-size: 150%;
+  float: right;
+  background: url(images/Gamepage/microchelcasa.png) no-repeat;
+  background-size: 300px 300px;
+  background-position:right;
+  z-index: 10000;
+}
 
+
+#form{
+ margin-left: 260px;
+ margin-top: 170px;
+width: 300px;
+height: 350px;
+  z-index: 10000;
+text-align: left;
+float: left;
+
+}
 
 
 #gamename {
@@ -616,11 +667,13 @@ z-index: 10000;
 }
 
 #Alloffers {
-  margin-left: 655px;
+  margin-left: 550px;
   position: absolute;
-  width: 200px;
-  height: 10%;
-  margin-top: 150px;
+  font-size: 200%;
+  width: 300px;
+  height: 100px;
+  margin-top: 120px;
+  text-align: center;
 }
 #lookinsteam {
   margin-left: 1005px;
@@ -639,7 +692,7 @@ z-index: 10000;
 }
 #description {
   padding: 20px;
-  margin-left: 805px;
+  margin-left: 835px;
   position: absolute;
   width: 600px;
   height: 50%;
@@ -701,6 +754,24 @@ z-index: 10000;
   position:relative;
   top:1px;
 }
+.myButton1 {
+  width: 150px;
+  height: 40px;
+  background: url(images/Gamepage/buybutton3.png) no-repeat;
+  background-size: 150px 35px;
+  border: 0.5px solid transparent;
+}
+.myButton1:hover {
+  background: url(images/Gamepage/buybutton4.png) no-repeat;
+  background-size: 150px 35px;
+}
+.myButton1:active {
+  position:relative;
+  background: url(images/Gamepage/buybutton4.png) no-repeat;
+  background-size: 150px 35px;
+}
+
+
 #lookinsteam1 {
   margin-left: 750px;
   position: absolute;
@@ -946,6 +1017,10 @@ z-index: 10000;
   flex-direction: row;
   justify-content: space-around;
 }
+
+
+
+
 #card1 {
   clear: both;
   margin: 20px 0;
@@ -966,6 +1041,7 @@ z-index: 10000;
 max-width: 15%;
 max-height: 100%;
 font-size: 16px;
+text-align: center;
 }
 
 #alluseroffers1 img {

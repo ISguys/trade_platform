@@ -55,12 +55,12 @@ const Game1 = () => {
                         <img src={game?.imagelink}
                           alt={game?.title} />
                           </div>
-                    <div id="gameprice">{game?.steamprice} <h>$</h></div>
+                    <div id="gameprice">Цена в STEAM: {game?.steamprice} <h>$</h></div>
                     <div id="buybutton"></div>
                 </div>
 
                 <div id="gamename">{game?.title}</div>
-                <div id="Alloffers"> Все предложения на маркете</div>
+                <div id="Alloffers"> Другие {game?.title} на торговой площадке </div><p />
                 <div id="alluseroffers">
                 {offers &&
           offers.map((offer) => (
@@ -73,7 +73,8 @@ const Game1 = () => {
                       />
                       </div>
                      Никнейм: {offer?.steam_name}<p/>
-                     Цена:  {offer?.price} $
+                     Цена:  {offer?.price} $ <p/>
+                     <button className='myButton1'></button>
                   </div>
 
 
@@ -83,8 +84,10 @@ const Game1 = () => {
                 <div id="lookinsteam"></div>
                 <div id="description"> {game?.description}
                 </div>
+                <div id="microchel1"></div>
+                <div id="microchel2"></div>
+                <div id="kasa"></div>
                 <div type="text/javascript" id="hde-kb-widget" data-host="hatterkeys.helpdeskeddy.com" data-lang="ru"></div>
-
             </div>
 
             <Footer/>
