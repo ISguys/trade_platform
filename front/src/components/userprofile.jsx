@@ -24,9 +24,12 @@ const UserProfile = () => {
     const Logout = () => {};
 
     const createOffer = () => {
-        axios.post(backendurl + '/offer/create', {             creatorid: userId,
-            gameid: currentGame,
-            price: offerPrice}, {
+        axios.post(backendurl + '/offer/create', {
+            creatorid: userId,
+            gameid: currentGame.toString(),
+            price: offerPrice
+        },
+            {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -79,10 +82,6 @@ const UserProfile = () => {
         });
     }
 
-    const makeOffer = (gameLink) => {
-
-    }
-
     useEffect(()=>{
         setloading(true);
         axios.get(backendurl + '/myaccount/' + userId, {
@@ -91,9 +90,8 @@ const UserProfile = () => {
             }
         })
             .then((res) => {
-                console.log('getting user', res);
                 setUser(res.data.user);
-                setInventory(res.data.user.inventory);
+                setInventory(res.data.inventory);
                 setTradeLink(res.data.user.trade_link);
                 setloading(false);
             })
@@ -145,20 +143,19 @@ const UserProfile = () => {
                 <div id="lookinsteam1"><input onChange={(event) => { setTradeLink(event.target.value); }} value={tradeLink} size="40"/></div>
                 <div id="lookinsteam2"><input type="submit" onClick={changeTradeLink} value="Cохранить" id="searchblank1"/></div>
                 <div id="genres1"> Инвентарь:</div>
-                <div id="inventory">
-                    {inventory?.map(game => (
+                 <div id="inventory">
+                     { inventory &&  inventory.map((game) => { console.log(game); return (
                         <div id="inventory_card">
                             <div id="card1img">
                                 <img
-                                    src={ game.imagelink}
-                                    alt={ "zxc"}
+                                    src={ game?.imagelink}
                                 />
                             </div>
                             <div style={{marginTop: '10px'}}>
-                                <button onClick={() => {setModalActive(true); setCurrentGame(game);}} className='myButton'>Создать предложение</button>
+                                <button onClick={() => {setModalActive(true); setCurrentGame(game.gameid);}} className='myButton'>Создать предложение</button>
                             </div>
                         </div>
-                    ))}
+                    )})}
 
                 </div>
                 <div id="genres2"> Предложения:</div>

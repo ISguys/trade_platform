@@ -29,13 +29,18 @@ module.exports = class User {
         const sql = `SELECT gameid, imagelink, steamprice, title, description, steamlink FROM "Users", unnest("Users"."inventory") item_id
 LEFT JOIN "Games" on "Games"."gameid"=item_id WHERE "id"='${userId}'`;
         const result = await pool.query(sql);
-        console.log(result.rows)
         return result.rows;
     }
 
     static async findBySteamId(userId) {
         console.log(userId);
         const sql = `SELECT * FROM "Users" WHERE "steam_id"='${userId}'`;
+        const result = await pool.query(sql);
+        return result.rows[0];
+    }
+
+    static async deleteGameFromInventory(userId, gameId) {
+        const sql = `UPDATE "Users" SET "inventory" = array_remove("inventory", '${gameId}') WHERE "id"='${userId}'`;
         const result = await pool.query(sql);
         return result.rows[0];
     }

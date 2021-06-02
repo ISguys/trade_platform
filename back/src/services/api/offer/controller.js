@@ -1,4 +1,5 @@
 const Offer = require('./model');
+[const User = require('../user/user-model');
 
 exports.getAll = async function (request, reply) {
     try {
@@ -59,6 +60,7 @@ exports.addOffer = async function (request, reply) {
     try {
         const { creatorid, gameid,  price } = request.body;
         const result = await Offer.add(creatorid, gameid,  price);
+        await User.deleteGameFromInventory(creatorid, gameid);
         return reply.send(result);
     } catch (err) {
         throw new Error(`${err.message}\n${err.name}: \

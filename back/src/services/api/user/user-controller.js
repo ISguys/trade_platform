@@ -31,7 +31,6 @@ exports.getAccount = async (req, reply) => {
     try {
         const user = await User.findById(userId);
         const inventory = await User.getInventory(userId);
-        console.log(inventory);
         if (!user) {
             return [];
         }

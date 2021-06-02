@@ -2,6 +2,7 @@ const fastify = require('fastify')({
     logger: true,
 });
 
+// steam-auth
 const fastifyPassport = require('fastify-passport');
 const SteamStrategy = require('passport-steam').Strategy;
 const fastifySecureSession = require('fastify-secure-session');
