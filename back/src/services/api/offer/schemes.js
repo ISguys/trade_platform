@@ -54,11 +54,10 @@ schemes.getOfferById = {
 schemes.addOffer = {
     body: {
         type: 'object',
-        required: ['creatorid', 'gameid', 'steambotlink', 'price'],
+        required: ['creatorid', 'gameid', 'price'],
         properties: {
             creatorid: { type: 'string' },
             gameid: { type: 'string' },
-            steambotlink: { type: 'string' },
             price: { type: 'number' },
         },
     },

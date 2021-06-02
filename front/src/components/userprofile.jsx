@@ -14,15 +14,33 @@ const UserProfile = () => {
     if(!storage) return (<Link to="/" exact component={GameList}> </Link>);
     const { token, userId} = JSON.parse(storage);
     const [user, setUser] = useState(null);
+    const [inventory, setInventory] = useState([]);
     const [offers, setOffers] = useState(null);
     const [loading, setloading] = useState(false);
     const [tradeLink, setTradeLink] = useState("");
     const [modalActive, setModalActive] = useState(false);
-
+    const [currentGame, setCurrentGame] = useState(null);
+    const [offerPrice, setOfferPrice] = useState(null);
     const Logout = () => {};
 
-    const createOffer = (game) => {
+    const createOffer = () => {
+        axios.post(backendurl + '/offer/create', {             creatorid: userId,
+            gameid: currentGame,
+            price: offerPrice}, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                window.location.reload()
+            })
+            .catch(err => {
+                console.log(err);
 
+            })
+            .finally(() => {
+                setloading(false);
+            });
     }
 
     const deleteOffer = (offerId) => {
@@ -74,8 +92,9 @@ const UserProfile = () => {
         })
             .then((res) => {
                 console.log('getting user', res);
-                setUser(res.data[0]);
-                setTradeLink(res.data[0].trade_link);
+                setUser(res.data.user);
+                setInventory(res.data.user.inventory);
+                setTradeLink(res.data.user.trade_link);
                 setloading(false);
             })
             .catch(err => {
@@ -127,16 +146,16 @@ const UserProfile = () => {
                 <div id="lookinsteam2"><input type="submit" onClick={changeTradeLink} value="Cохранить" id="searchblank1"/></div>
                 <div id="genres1"> Инвентарь:</div>
                 <div id="inventory">
-                    {user?.inventory.map(game => (
+                    {inventory?.map(game => (
                         <div id="inventory_card">
                             <div id="card1img">
                                 <img
-                                    src={ game}
+                                    src={ game.imagelink}
                                     alt={ "zxc"}
                                 />
                             </div>
                             <div style={{marginTop: '10px'}}>
-                                <button onClick={() => setModalActive(true)} className='myButton'>Создать предложение</button>
+                                <button onClick={() => {setModalActive(true); setCurrentGame(game);}} className='myButton'>Создать предложение</button>
                             </div>
                         </div>
                     ))}
@@ -167,8 +186,8 @@ const UserProfile = () => {
                 <div id="modalcontent">
                     <div> <img src={sitelogo} alt="logo" className="gamepageimg"/></div>
                     <div id ="sellprice" >Введите цену продажи:</div>
-                    <div><input type="number" name="name" id="searchblank1"/></div>
-                    <input type="Submit" onClick={()=>{}} value="Продать" id="sellbutton" />
+                    <div><input type="number" onChange={(event) => { setOfferPrice(event.target.value); }} name="name" id="searchblank1"/></div>
+                    <input type="Submit" onClick={()=>{createOffer()}} value="Продать" id="sellbutton" />
                 </div>
             </Modal>
             <Footer/>

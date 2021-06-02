@@ -22,6 +22,14 @@ module.exports = class User {
     static async findById(userId) {
         const sql = `SELECT * FROM "Users" WHERE "id"='${userId}'`;
         const result = await pool.query(sql);
+        return result.rows[0];
+    }
+
+    static async getInventory(userId) {
+        const sql = `SELECT gameid, imagelink, steamprice, title, description, steamlink FROM "Users", unnest("Users"."inventory") item_id
+LEFT JOIN "Games" on "Games"."gameid"=item_id WHERE "id"='${userId}'`;
+        const result = await pool.query(sql);
+        console.log(result.rows)
         return result.rows;
     }
 

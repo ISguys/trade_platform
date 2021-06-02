@@ -30,11 +30,10 @@ class Offer {
         return result.rows;
     }
 
-    static async add(creatorId, gameId, steamBotLink, price) {
-        const args = [v4(), creatorId, gameId, steamBotLink, price];
+    static async add(creatorId, gameId,  price) {
+        const args = [v4(), creatorId, gameId,  price];
         const sql =
-            'INSERT INTO "Offers"(orderid, creatorid, gameid,\
- steambotlink, price) VALUES ($1, $2, $3, $4, $5)';
+            'INSERT INTO "Offers"(orderid, creatorid, gameid, price) VALUES ($1, $2, $3, $4)';
         await pool.query(sql, args);
         return 'success';
     }

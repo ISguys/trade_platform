@@ -57,8 +57,8 @@ exports.getOfferById = async function (request, reply) {
 
 exports.addOffer = async function (request, reply) {
     try {
-        const { creatorid, gameid, steambotlink, price } = request.body;
-        const result = await Offer.add(creatorid, gameid, steambotlink, price);
+        const { creatorid, gameid,  price } = request.body;
+        const result = await Offer.add(creatorid, gameid,  price);
         return reply.send(result);
     } catch (err) {
         throw new Error(`${err.message}\n${err.name}: \

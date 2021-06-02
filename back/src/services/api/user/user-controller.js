@@ -30,11 +30,14 @@ exports.getAccount = async (req, reply) => {
     const userId = req.params.userId;
     try {
         const user = await User.findById(userId);
+        const inventory = await User.getInventory(userId);
+        console.log(inventory);
         if (!user) {
             return [];
         }
-        return reply.send(user);
+        return reply.send({user, inventory});
     } catch (err) {
+        console.log(err);
         throw new Error('error');
     }
 };
