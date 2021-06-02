@@ -12,7 +12,6 @@ class Game {
     static async getById(gameId) {
         const sql = `SELECT * FROM "Games" WHERE gameid = '${gameId}'`;
         const result = await pool.query(sql);
-        console.log(result.rows);
         return result.rows;
     }
 

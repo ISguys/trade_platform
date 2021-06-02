@@ -16,7 +16,7 @@ schemes.getAll = {
                 properties: {
                     gameid: { type: 'string' },
                     title: { type: 'string' },
-                    streamprice: { type: 'string' },
+                    steamprice: { type: 'number' },
                     steamlink: { type: 'string' },
                     imagelink: { type: 'string' },
                     description: { type: 'string' },
@@ -35,7 +35,7 @@ schemes.getGameById = {
                 properties: {
                     gameid: { type: 'string' },
                     title: { type: 'string' },
-                    streamprice: { type: 'string' },
+                    steamprice: { type: 'number' },
                     steamlink: { type: 'string' },
                     imagelink: { type: 'string' },
                     description: { type: 'string' },
@@ -56,7 +56,7 @@ schemes.addGame = {
             'description',
         ],
         properties: {
-            streamprice: { type: 'number' },
+            steamprice: { type: 'number' },
             title: { type: 'string' },
             steamlink: { type: 'string' },
             imagelink: { type: 'string' },
