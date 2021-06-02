@@ -14,12 +14,15 @@ class Order {
         return result.rows;
     }
 
-    static async add(sellerId, buyerId, orderId, type) {
+    static async add(sellerId, buyerId, orderId, type, newBalance, game) {
         const args = [v4(), sellerId, buyerId, orderId, type];
         const sql =
             'INSERT INTO "Orders"(id, sellerid, buyerid, orderid,\
  type) VALUES ($1, $2, $3, $4, $5)';
         await pool.query(sql, args);
+        const sqlUpdateBalance = 'UPDATE "Users" SET balance = $1, inventory = array_append(inventory, $2) WHERE id = $3';
+        const argsUpdateBalance = [newBalance, game, buyerId]
+        await pool.query(sqlUpdateBalance, argsUpdateBalance);
         return 'success';
     }
 

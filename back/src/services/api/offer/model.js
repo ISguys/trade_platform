@@ -54,8 +54,8 @@ class Offer {
     static async close(offerId, buyerId) {
         const args = [buyerId, offerId];
         const sql =
-            "UPDATE \"Offers\" SET status = FALSE,\
- buyerid = '$1', orderdate = NOW() WHERE orderid = '$2'";
+            'UPDATE "Offers" SET status = FALSE,\
+ buyerid = $1, orderdate = NOW() WHERE orderid = $2';
         await pool.query(sql, args);
         return 'success';
     }

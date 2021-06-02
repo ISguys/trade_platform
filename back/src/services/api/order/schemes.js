@@ -41,9 +41,8 @@ schemes.getOrderById = {
 schemes.addOrder = {
     body: {
         type: 'object',
-        required: ['sellerid', 'buyerid', 'orderid', 'type'],
+        required: ['buyerid', 'orderid', 'type'],
         properties: {
-            sellerid: { type: 'string' },
             buyerid: { type: 'string' },
             orderid: { type: 'string' },
             type: { type: 'string' },
@@ -54,6 +53,9 @@ schemes.addOrder = {
         200: {
             type: 'string',
         },
+        422: {
+            type: 'string',
+        }
     },
 };
 //delete

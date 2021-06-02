@@ -17,6 +17,7 @@ module.exports = function (fastify, opts, done) {
     // get offer by id
     fastify.get(
         '/offer/:orderId',
+        { schema: schemes.getOfferById },
         getOfferById
     );
     // add new offer
