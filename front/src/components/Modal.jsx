@@ -1,5 +1,6 @@
 import React from 'react';
 
+// eslint-disable-next-line react/prop-types
 const Modal = ({active, setActive, children}) => {
   return (
     <div className = {active ? "modal active" : "modal"} onClick={() => setActive(false)}>
