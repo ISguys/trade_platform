@@ -12,7 +12,7 @@ class Offer {
 
     static async getByGame(gameId) {
         const sql = `SELECT * FROM "Offers" inner join\
- "Users" on "Offers"."creatorid" = "Users"."id" WHERE gameid = '${gameId}'`;
+ "Users" on "Offers"."creatorid" = "Users"."id" WHERE "Offers"."gameid" = '${gameId}' and "status"=true`;
         const result = await pool.query(sql);
         return result.rows;
     }
@@ -20,20 +20,20 @@ class Offer {
     static async getByUser(userId) {
         const sql = `SELECT * FROM "Offers" inner join\
  "Games" on "Offers"."gameid" = "Games"."gameid" WHERE\
- creatorid = '${userId}'`;
+ creatorid = '${userId}' and "status"=true`;
         const result = await pool.query(sql);
         return result.rows;
     }
     static async getById(offerId) {
-        const sql = `SELECT * FROM "Offers" WHERE orderid = '${offerId}'`;
+        const sql = `SELECT * FROM "Offers" WHERE orderid = '${offerId}' and "status"=true`;
         const result = await pool.query(sql);
         return result.rows;
     }
 
     static async add(creatorId, gameId,  price) {
         const args = [v4(), creatorId, gameId,  price];
-        const sql =
-            'INSERT INTO "Offers"(orderid, creatorid, gameid, price) VALUES ($1, $2, $3, $4)';
+        // eslint-disable-next-line max-len
+        const sql = 'INSERT INTO "Offers"(orderid, creatorid, gameid, price) VALUES ($1, $2, $3, $4)';
         await pool.query(sql, args);
         return 'success';
     }

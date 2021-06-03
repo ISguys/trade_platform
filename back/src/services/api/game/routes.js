@@ -9,14 +9,14 @@ const {
     gameByImage,
 } = require('./controller');
 
-module.exports = function (fastify, opts, done) {
+module.exports = function(fastify, opts, done) {
     // get page of games from table Game
     fastify.get('/game/page', { schema: schemes.getAll }, getAll);
     // get game by id
     fastify.get('/game/:gameId', { schema: schemes.getGameById }, getGameById);
+    //search by game name
     fastify.post('/game/search', gameSearch);
 
-    fastify.post('/game/byImage', gameByImage);
     // add new game
     fastify.post(
         '/game',

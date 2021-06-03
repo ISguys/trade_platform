@@ -11,12 +11,6 @@ module.exports = async function(fastify) {
     });
     fastify.route({
         method: 'GET',
-        url: '/users/:userId',
-        preValidation: [fastify.tokenValidation],
-        handler: getById,
-    });
-    fastify.route({
-        method: 'GET',
         url: '/myaccount/:userId',
         preValidation: [fastify.tokenValidation],
         handler: getAccount,
@@ -27,6 +21,6 @@ module.exports = async function(fastify) {
         url: '/myaccount/:userId',
         preValidation: [fastify.tokenValidation],
         handler: update,
-    })
+    });
 
 };

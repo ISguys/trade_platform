@@ -16,12 +16,6 @@ class Game {
     }
 
 
-    static async getByImg(gameImg) {
-        const sql = `SELECT * FROM "Games" WHERE image_link = '${gameImg}'`;
-        const result = await pool.query(sql);
-        return result.rows;
-    }
-
     static async add(steamprice, title, steamlink, imagelink, description) {
         const args = [
             v4(),

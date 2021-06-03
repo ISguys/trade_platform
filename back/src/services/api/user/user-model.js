@@ -39,6 +39,12 @@ LEFT JOIN "Games" on "Games"."gameid"=item_id WHERE "id"='${userId}'`;
         return result.rows[0];
     }
 
+    static async addGameToInventory(userId, gameId) {
+        const sqlUpdateInventory = 'UPDATE "Users" SET inventory = array_append(inventory, $1) WHERE id = $2';
+        const argsUpdateInventory = [ gameId, userId]
+        await pool.query(sqlUpdateInventory, argsUpdateInventory);
+    }
+
     static async deleteGameFromInventory(userId, gameId) {
         const sql = `UPDATE "Users" SET "inventory" = array_remove("inventory", '${gameId}') WHERE "id"='${userId}'`;
         const result = await pool.query(sql);
@@ -61,11 +67,11 @@ LEFT JOIN "Games" on "Games"."gameid"=item_id WHERE "id"='${userId}'`;
 
     static async updateUser(userId, fields) {
         // create sql script
-        console.log(fields)
+        console.log(fields);
         console.log(userId);
-        let sql = `UPDATE "Users" SET "trade_link" = '${fields}' WHERE id = '${userId}'`;
+        const sql = `UPDATE "Users" SET "trade_link" = '${fields}' WHERE id = '${userId}'`;
         // execute script
-        console.log(sql)
+        console.log(sql);
         return pool.query(sql);
     }
 };

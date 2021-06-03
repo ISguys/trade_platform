@@ -35,20 +35,29 @@ exports.addOrder = async function (request, reply) {
         const { buyerid, orderid, type } = request.body;
         // get user's balance
         const user = await User.findById(buyerid);
-        const balance = parseFloat(user[0]['balance']);
+        console.log({user});
+        const balance = parseFloat(user.balance);
+        console.log({balance})
         // get offer info
         const offer = await Offer.getById(orderid);
-        const price = parseFloat(offer[0]['price']);
+        let price = parseFloat(offer[0]['price']);
+        // if seller and buyer is the same
+        if(user.id === offer[0].creatorid){
+            price = 0;
+        }
+
         if (price < balance) {
             const sellerid = offer[0]['creatorid'];
+            const sellerBalance = await User.findById(sellerid);
             const game = offer[0]['gameid'];
-            const result = await Order.add(sellerid, buyerid, orderid, type, balance - price, game);
+            const result = await Order.add(sellerid, buyerid, orderid, type, parseFloat(sellerBalance.balance) + price, balance - price, game);
             if (offer.length >= 1) await Offer.close(orderid, buyerid);
             return reply.send(result);
         } else {
             return reply.code(422).send('Not enough money on balance');
         }
     } catch (err) {
+        console.log(err);
         throw new Error(`${err.message}\n${err.name}: \
         in line ${err.lineNumber}`);
     }

@@ -53,7 +53,7 @@ const UserProfile = () => {
 
     const deleteOffer = (offerId) => {
         axios
-            .delete(backendurl + '/offer/' + offerId, {
+            .post(backendurl + '/offer/' + offerId, {userId},{
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

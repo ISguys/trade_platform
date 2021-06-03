@@ -8,7 +8,7 @@ const {
     deleteOffer,
 } = require('./controller');
 
-module.exports = function (fastify, opts, done) {
+module.exports = function(fastify, opts, done) {
     // get all rows from table Offers
     fastify.get('/offer', { schema: schemes.getAll }, getAll);
 
@@ -30,10 +30,9 @@ module.exports = function (fastify, opts, done) {
         addOffer
     );
     // delete offer
-    fastify.delete(
+    fastify.post(
         '/offer/:orderId',
         {
-            schema: schemes.deleteOffer,
             preValidation: [fastify.tokenValidation],
         },
         deleteOffer

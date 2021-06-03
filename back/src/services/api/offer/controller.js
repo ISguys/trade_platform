@@ -1,7 +1,7 @@
 const Offer = require('./model');
-[const User = require('../user/user-model');
+const User = require('../user/user-model');
 
-exports.getAll = async function (request, reply) {
+exports.getAll = async function(request, reply) {
     try {
         const offers = await Offer.getAll();
         if (offers.length < 1) {
@@ -19,7 +19,7 @@ exports.getByGame = async (request, reply) => {
     try {
         const offers = await Offer.getByGame(gameId);
         if (offers.length < 1) {
-            reply.send([]);
+           return reply.send([]);
         }
         return reply.send(offers);
     } catch (err) {
@@ -42,7 +42,7 @@ exports.getByUser = async (request, reply) => {
     }
 };
 
-exports.getOfferById = async function (request, reply) {
+exports.getOfferById = async function(request, reply) {
     try {
         const { orderId } = request.params;
         const offer = await Offer.getById(orderId);
@@ -56,7 +56,7 @@ exports.getOfferById = async function (request, reply) {
     }
 };
 
-exports.addOffer = async function (request, reply) {
+exports.addOffer = async function(request, reply) {
     try {
         const { creatorid, gameid,  price } = request.body;
         const result = await Offer.add(creatorid, gameid,  price);
@@ -68,12 +68,17 @@ exports.addOffer = async function (request, reply) {
     }
 };
 
-exports.deleteOffer = async function (request, reply) {
+exports.deleteOffer = async function(request, reply) {
     try {
         const { orderId } = request.params;
+        const { userId } = request.body;
+        const offer = await Offer.getById(orderId);
         const result = await Offer.delete(orderId);
+
+        await User.addGameToInventory(userId, offer[0].gameid);
         return reply.send(result);
     } catch (err) {
+        console.log(err);
         throw new Error(`${err.message}\n${err.name}: \
         in line ${err.lineNumber}`);
     }
