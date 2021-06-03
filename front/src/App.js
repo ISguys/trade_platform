@@ -15,41 +15,41 @@ let logoutTimer;
 function App() {
 
     const [tok, setToken] = useState(false);
-    const [tokenExperationTime, setTokenExperationTime] = useState();
+    const [tokenExpirationTime, setTokenExpirationTime] = useState();
     const [uid, setUserId] = useState();
 
     const storedData = JSON.parse(localStorage.getItem('userData'));
 
-    const login = useCallback((token, userId, experationDate) => {
+    const login = useCallback((token, userId, ExpirationDate) => {
         setToken(token);
         setUserId(userId);
-        const tokenExpire = experationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
-        setTokenExperationTime(tokenExpire);
-        localStorage.setItem('experation', tokenExpire.toISOString());
+        const tokenExpire = ExpirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
+        setTokenExpirationTime(tokenExpire);
+        localStorage.setItem('Expiration', tokenExpire.toISOString());
     }, []);
 
     const logout = useCallback(() => {
         setToken(null);
         setUserId(null);
-        setTokenExperationTime(null);
+        setTokenExpirationTime(null);
         localStorage.removeItem('userData');
-        localStorage.removeItem('experation');
+        localStorage.removeItem('Expiration');
     }, []);
 
     useEffect(() => {
-        if (tok && tokenExperationTime) {
-            const remainingTime = tokenExperationTime.getTime() - new Date().getTime();
+        if (tok && tokenExpirationTime) {
+            const remainingTime = tokenExpirationTime.getTime() - new Date().getTime();
             logoutTimer = setTimeout(logout, remainingTime);
         } else {
             clearTimeout(logoutTimer);
         }
     },
-    [tok, logout, tokenExperationTime]);
+    [tok, logout, tokenExpirationTime]);
 
     useEffect(() => {
-        const experation = localStorage.getItem('experation');
-        if (storedData && experation && storedData.token && new Date(experation) > new Date()) {
-            login(storedData.userId, storedData.token, new Date(experation));
+        const Expiration = localStorage.getItem('Expiration');
+        if (storedData && Expiration && storedData.token && new Date(Expiration) > new Date()) {
+            login(storedData.userId, storedData.token, new Date(Expiration));
         }
     },
     [login]);
