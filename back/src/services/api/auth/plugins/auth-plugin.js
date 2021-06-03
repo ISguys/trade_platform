@@ -10,7 +10,8 @@ module.exports = fp(async (fastify) => {
         }
         let token;
         try {
-            token = request.headers.authorization.split(' ')[1]; //Authorization bearer token
+            //Authorization bearer token
+            token = request.headers.authorization.split(' ')[1];
             if (!token) {
                 reply.send('invalid token');
             }

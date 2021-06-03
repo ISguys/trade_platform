@@ -9,17 +9,23 @@ class Order {
     }
 
     static async getById(orderId) {
-        const sql = `SELECT * FROM "Orders" WHERE order_id = '${orderId}'`;
+        const sql = `SELECT * FROM "Orders" WHERE id = '${orderId}'`;
         const result = await pool.query(sql);
         return result.rows;
     }
 
-    static async add(sellerId, buyerId, orderId, type) {
+    static async add(sellerId, buyerId, orderId, type, sellerBalance, newBalance, game) {
         const args = [v4(), sellerId, buyerId, orderId, type];
         const sql =
-            'INSERT INTO "Orders"(id, seller_id, buyer_id, order_id,\
+            'INSERT INTO "Orders"(id, sellerid, buyerid, orderid,\
  type) VALUES ($1, $2, $3, $4, $5)';
         await pool.query(sql, args);
+        const sqlUpdateBalance = 'UPDATE "Users" SET balance = $1, inventory = array_append(inventory, $2) WHERE id = $3';
+        const argsUpdateBalance = [newBalance, game, buyerId]
+        await pool.query(sqlUpdateBalance, argsUpdateBalance);
+        const sqlUpdateSellerBalance = 'UPDATE "Users" SET balance = $1 WHERE id = $2';
+        const argsUpdateSellerBalance = [sellerBalance, sellerId]
+        await pool.query(sqlUpdateSellerBalance, argsUpdateSellerBalance);
         return 'success';
     }
 

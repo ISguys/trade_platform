@@ -25,7 +25,7 @@ exports.login = async (req, reply) => {
             username: user.steam_name,
             jwtToken: token,
             clientUrl: process.env.FRONT_URL
-        })
+        });
         return reply.view('success', {
             id: user.id,
             username: user.steam_name,

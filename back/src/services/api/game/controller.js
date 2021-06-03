@@ -1,4 +1,3 @@
-
 const Game = require('./model');
 
 exports.getAll = async function(request, reply) {
@@ -18,21 +17,6 @@ exports.getGameById = async function(request, reply) {
     try {
         const { gameId } = request.params;
         const game = await Game.getById(gameId);
-        if (!game) {
-            return reply.send({ message: 'No game' });
-        }
-        return reply.send(game);
-    } catch (err) {
-        throw new Error(`${err.message}\n${err.name}: \
-        in line ${err.lineNumber}`);
-    }
-};
-
-exports.gameByImage = async function(request, reply) {
-    try {
-        const { gameImg } = request.body;
-
-        const game = await Game.getByImg(gameImg);
         if (!game) {
             return reply.send({ message: 'No game' });
         }
@@ -106,5 +90,3 @@ exports.deleteGame = async function(request, reply) {
         in line ${err.lineNumber}`);
     }
 };
-
-

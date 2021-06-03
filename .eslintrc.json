@@ -1,5 +1,5 @@
 {
-    "env": {
+   /* "env": {
         "browser": true,
         "es2021": true,
         "node": true
@@ -155,5 +155,5 @@
         "prefer-spread": ["error"],
         "rest-spread-spacing": ["error", "never"],
         "template-curly-spacing": ["error", "never"]
-    }
+    }*/
 }

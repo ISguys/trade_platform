@@ -15,6 +15,7 @@ class Game {
         return result.rows;
     }
 
+
     static async add(steamprice, title, steamlink, imagelink, description) {
         const args = [
             v4(),
@@ -24,7 +25,6 @@ class Game {
             imagelink,
             description,
         ];
-        console.log(args);
         const sql =
             'INSERT INTO "Games"(gameid, steamprice, title, steamlink, \
 imagelink, description) VALUES ($1, $2, $3, $4, $5, $6)';
