@@ -10,7 +10,7 @@ k6_performance_tests: &k6_performance_tests
     # Mount a volume to access the folder and run the test
     command: |
       docker pull loadimpact/k6:latest
-      docker run -i loadimpact/k6:latest run ./k6/performance-offers.js
+      docker run -i -v $HOME/trade_platform loadimpact/k6:latest run ./k6/performance-offers.js
 
 jobs:
   run_performance_tests:
