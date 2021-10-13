@@ -8,9 +8,9 @@ k6_performance_tests: &k6_performance_tests
     name: Running k6 tests
     # Download the k6 docker image. Alternatively, download the k6 release binary
     # Mount a volume to access the folder and run the test
-    command: |
+    ommand: |
       docker pull loadimpact/k6:latest
-      docker run -i -v $HOME/trade_platform loadimpact/k6:latest run ./k6/performance-offers.js
+      docker run -i -v $HOME/trade_platform:/ci/ loadimpact/k6:latest run /ci/k6/performance-orders.js
 
 jobs:
   run_performance_tests:
