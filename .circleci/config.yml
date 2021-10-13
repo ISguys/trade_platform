@@ -1,4 +1,5 @@
 version: 2.1
+working_directory: ~/trade_platform
 orbs:
   node: circleci/node@3.0.1
   heroku: circleci/heroku@1.0.1
