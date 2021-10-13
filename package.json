@@ -20,6 +20,7 @@
         "fastify-secure-session": "^2.3.1",
         "jest": "^26.6.3",
         "jsonwebtoken": "^8.5.1",
+        "k6": "0.0.0",
         "passport-steam": "^1.0.15",
         "pg": "^8.6.0",
         "point-of-view": "^4.14.0",
