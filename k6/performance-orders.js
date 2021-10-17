@@ -7,6 +7,6 @@ export let options = {
 };
 
 export default function () {
-    http.get(`https://trade-steam.herokuapp.com/order`);
+    http.get(`${process.env.BACK_URL}/order`);
     sleep(3);
 }
