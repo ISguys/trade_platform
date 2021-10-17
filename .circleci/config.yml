@@ -12,7 +12,7 @@ k6_performance_tests: &k6_performance_tests
       sudo apt-get update
       sudo apt install snapd
       sudo snap install k6
-      k6 run ./k6/performance-orders.js
+      sudo k6 run ./k6/performance-orders.js
 jobs:
   run_performance_tests:
     # Use `machine` executor because the Docker executor cannot mount volumes
