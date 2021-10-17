@@ -9,9 +9,10 @@ k6_performance_tests: &k6_performance_tests
     # Download the k6 docker image. Alternatively, download the k6 release binary
     # Mount a volume to access the folder and run the test
     command: |
-      docker pull loadimpact/k6:latest
-      docker run -i -v $HOME/trade_platform:/ci/ loadimpact/k6:latest run /ci/k6/performance-orders.js
-
+      sudo apt-get update
+      sudo apt install snapd
+      sudo snap install k6
+      k6 run ./k6/performance-orders.js
 jobs:
   run_performance_tests:
     # Use `machine` executor because the Docker executor cannot mount volumes
