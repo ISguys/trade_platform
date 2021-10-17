@@ -10,7 +10,7 @@ k6_performance_tests: &k6_performance_tests
     # Mount a volume to access the folder and run the test
     command: |
       docker pull loadimpact/k6:latest
-      docker run -i -v $(PWD):/ci/ loadimpact/k6:latest run /ci/k6/performance-orders.js
+      docker run -i -v $(PWD) loadimpact/k6:latest run /ci/k6/performance-orders.js
 
 jobs:
   run_performance_tests:
