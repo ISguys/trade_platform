@@ -1,8 +1,26 @@
 version: 2.1
+working_directory: ~/trade_platform
 orbs:
   node: circleci/node@3.0.1
   heroku: circleci/heroku@1.0.1
+k6_performance_tests: &k6_performance_tests
+  run:
+    name: Running k6 tests
+    # Download the k6 docker image. Alternatively, download the k6 release binary
+    # Mount a volume to access the folder and run the test
+    command: |
+      docker pull loadimpact/k6:latest
+      docker run -i -e BACK_URL=$PROD_BACK_URL -v $(pwd):/ci/ loadimpact/k6:latest run /ci/k6/performance-orders.js
+      docker run -i -e BACK_URL=$PROD_BACK_URL -v $(pwd):/ci/ loadimpact/k6:latest run /ci/k6/performance-game.js
+      docker run -i -e BACK_URL=$PROD_BACK_URL -v $(pwd):/ci/ loadimpact/k6:latest run /ci/k6/performance-offers.js
+
 jobs:
+  run_performance_tests:
+    # Use `machine` executor because the Docker executor cannot mount volumes
+    machine: true
+    steps:
+      - checkout
+      - *k6_performance_tests
   build-and-test:
     executor: node/default
     steps:
@@ -43,6 +61,7 @@ workflows:
   build-test-deploy:
     jobs:
       - build-and-test
+      - run_performance_tests
       - deploy:
           requires:
             - build-and-test
