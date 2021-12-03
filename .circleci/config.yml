@@ -11,6 +11,8 @@ k6_performance_tests: &k6_performance_tests
     command: |
       docker pull loadimpact/k6:latest
       docker run -i -e BACK_URL=$PROD_BACK_URL -v $(pwd):/ci/ loadimpact/k6:latest run /ci/k6/performance-orders.js
+      docker run -i -e BACK_URL=$PROD_BACK_URL -v $(pwd):/ci/ loadimpact/k6:latest run /ci/k6/performance-game.js
+      docker run -i -e BACK_URL=$PROD_BACK_URL -v $(pwd):/ci/ loadimpact/k6:latest run /ci/k6/performance-offers.js
 
 jobs:
   run_performance_tests:
