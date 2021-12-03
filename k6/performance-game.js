@@ -7,6 +7,6 @@ export let options = {
 };
 
 export default function () {
-    http.get(`https://trade-steam.herokuapp.com/offers`);
+    http.get(`https://trade-steam.herokuapp.com/game/page`);
     sleep(3);
-}
+} 
