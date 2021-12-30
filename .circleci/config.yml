@@ -19,7 +19,7 @@ jobs:
       - checkout
       - run:
           name: Running npm install
-          command: npm i
+          command: npm install
       - run:
           name: Running npm start
           command:
