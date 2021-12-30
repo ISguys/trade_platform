@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Running npm install
           command:
-            npm ci
+            npm ci --only=production
       - run:
           name: Running npm start
           command:
