@@ -19,8 +19,9 @@ jobs:
       - checkout
       - run:
           name: Running npm install
-          command:
-            npm install
+          command: |
+            npm i npm@latest -g
+            npm i
       - run:
           name: Running npm start
           command:
