@@ -19,18 +19,6 @@ jobs:
    # runs-on: ubuntu-latest
     steps:
       - checkout
-      - run:
-          name: Running npm install
-          command: |
-            npm install           
-      - run:
-          name: Running npm start
-          command:
-            npm start & npx wait-on http://localhost:3001
-      - run:
-          name: Running k6
-          command:
-            docker run -i -e BACK_URL=$PROD_BACK_URL -v $(pwd):/ci/ loadimpact/k6:latest run /ci/k6/performance-offers.js
   build-and-test:
     executor: node/default
     steps:
