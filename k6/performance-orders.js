@@ -7,6 +7,6 @@ export let options = {
 };
 
 export default function () {
-    http.get(`${process.env.BACK_URL}/order`);
+    http.get(`http://0.0.0.0:3001/order`);
     sleep(3);
 }
