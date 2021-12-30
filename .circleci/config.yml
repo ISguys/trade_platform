@@ -3,6 +3,7 @@ working_directory: ~/trade_platform
 orbs:
   node: circleci/node@4.0.0
   heroku: circleci/heroku@1.0.1
+  test: k6io/test@1.1.1
 k6_performance_tests: &k6_performance_tests
   run:
     
