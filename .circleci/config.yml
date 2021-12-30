@@ -12,10 +12,7 @@ k6_performance_tests: &k6_performance_tests
                   npm install
                   DEPLOYMENT=dev npm run build
                   npm start & npx wait-on http://localhost:3001
-                  sudo apt-get update &
-                  sudo apt install snapd &
-                  sudo snap install k6 &
-                  sudo k6 run ./k6/performance-orders.js 
+                  docker run -i -e BACK_URL=$PROD_BACK_URL -v $(pwd):/ci/ loadimpact/k6:latest run /ci/k6/performance-offers.js
 jobs:
   run_performance_tests:
     # Use `machine` executor because the Docker executor cannot mount volumes
