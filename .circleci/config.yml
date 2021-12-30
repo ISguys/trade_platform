@@ -58,6 +58,8 @@ jobs:
 workflows:
   build-test-deploy:
     jobs:
+      - k6io/test:
+          script:   k6/performance-orders.js
       - build-and-test
       - run_performance_tests
       - deploy:
