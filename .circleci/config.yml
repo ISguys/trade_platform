@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Running npm install
           command: |
-            rm package.json
+            rm package-lock.json
             npm install
             
       - run:
