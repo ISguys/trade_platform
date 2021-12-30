@@ -15,12 +15,14 @@ jobs:
   run_performance_tests:
     # Use `machine` executor because the Docker executor cannot mount volumes
     machine: true
+   # runs-on: ubuntu-latest
     steps:
       - checkout
       - run:
           name: Running npm install
           command: |
             rm package-lock.json
+            rm -r node_modules
             npm install
             
       - run:
