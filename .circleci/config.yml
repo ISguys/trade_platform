@@ -5,29 +5,17 @@ orbs:
   heroku: circleci/heroku@1.0.1
 k6_performance_tests: &k6_performance_tests
   run:
-    name: Running k6 tests
-    runs-on: ubuntu-latest
-      steps:
-          - name: Checkout
-            uses: actions/checkout@v2
-              - name: Install k6
-                run: |
+    
+    name: Install k6
+    command: |
                   curl https://github.com/loadimpact/k6/releases/download/v0.26.2/k6-v0.26.2-linux64.tar.gz -L | tar xvz --strip-components 1
-              - name: Install packages
-                run: |
                   npm install
-              - name: Build
-                run: |
                   DEPLOYMENT=dev npm run build
-              - name: Start server
-                run: |
                   npm start & npx wait-on http://localhost:3001
-              - name: Run tests
-                run: |
-                  sudo apt-get update
-                  sudo apt install snapd
-                  sudo snap install k6
-                  sudo k6 run ./k6/performance-orders.js
+                  sudo apt-get update &
+                  sudo apt install snapd &
+                  sudo snap install k6 &
+                  sudo k6 run ./k6/performance-orders.js 
 jobs:
   run_performance_tests:
     # Use `machine` executor because the Docker executor cannot mount volumes
