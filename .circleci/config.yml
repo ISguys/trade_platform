@@ -8,6 +8,7 @@ k6_performance_tests: &k6_performance_tests
     
     name: Install k6
     command: |
+                  npm install
                   npm start & npx wait-on http://localhost:3001
                   docker run -i -e BACK_URL=$PROD_BACK_URL -v $(pwd):/ci/ loadimpact/k6:latest run /ci/k6/performance-offers.js
 jobs:
