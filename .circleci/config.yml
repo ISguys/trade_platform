@@ -1,38 +1,23 @@
 version: 2.1
 working_directory: ~/trade_platform
 orbs:
-  node: circleci/node@4.0.0
+  node: circleci/node@3.0.1
   heroku: circleci/heroku@1.0.1
 k6_performance_tests: &k6_performance_tests
   run:
-    
-    name: Install k6
+    name: Running k6 tests
+    # Download the k6 docker image. Alternatively, download the k6 release binary
+    # Mount a volume to access the folder and run the test
     command: |
-                  npm ci
-                  npm start & npx wait-on http://localhost:3001
-                  docker run -i -e BACK_URL=$PROD_BACK_URL -v $(pwd):/ci/ loadimpact/k6:latest run /ci/k6/performance-offers.js
+      docker pull loadimpact/k6:latest
+      docker run -i -e BACK_URL=$PROD_BACK_URL -v $(pwd):/ci/ loadimpact/k6:latest run /ci/k6/performance-orders.js
 jobs:
   run_performance_tests:
     # Use `machine` executor because the Docker executor cannot mount volumes
     machine: true
-   # runs-on: ubuntu-latest
     steps:
       - checkout
-      - run:
-          name: Running npm install
-          command: |
-            rm package-lock.json
-            rm -r node_modules
-            npm install
-            
-      - run:
-          name: Running npm start
-          command:
-            npm start & npx wait-on http://localhost:3001
-      - run:
-          name: Running k6
-          command:
-            docker run -i -e BACK_URL=$PROD_BACK_URL -v $(pwd):/ci/ loadimpact/k6:latest run /ci/k6/performance-offers.js
+      - *k6_performance_tests
   build-and-test:
     executor: node/default
     steps:
