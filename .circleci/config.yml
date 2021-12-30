@@ -1,7 +1,7 @@
 version: 2.1
 working_directory: ~/trade_platform
 orbs:
-  node: circleci/node@5.0.0
+  node: circleci/node@4.0.0
   heroku: circleci/heroku@1.0.1
 k6_performance_tests: &k6_performance_tests
   run:
@@ -19,7 +19,10 @@ jobs:
       - checkout
       - run:
           name: Running npm install
-          command: npm install
+          command: |
+            rm package.json
+            npm install
+            
       - run:
           name: Running npm start
           command:
